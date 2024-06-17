@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage/HomePage';
 import './App.scss'
 
 function App() {
-  const port = import.meta.env.VITE_PORT;
+  const port = import.meta.env.VITE_PORT || "http://localhost:8080";
   return (
     <BrowserRouter>
       <Routes>
