@@ -17,6 +17,19 @@
     font-weight: 600;
     font-size: $mobile-h1PageHeader_textSize;
     line-height: $mobile-h1PageHeader_lineHeight;
-    // flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    border-bottom: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
   }
+}
+.edit-inventory__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
