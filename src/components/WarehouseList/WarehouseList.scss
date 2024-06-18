@@ -1,0 +1,82 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/topography" as *;
+@use "../../styles/partials/variables" as *;
+
+.warehouses {
+  &__header {
+    font-size: $mobile-h1PageHeader_textSize;
+    line-height: $mobile-h1PageHeader_lineHeight;
+  }
+  &__header-container {
+  }
+  &__search {
+    width: 100%;
+    height: 36px;
+    border-radius: 20px;
+    text-indent: 1rem;
+    border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+
+    &:focus {
+      border: 1px solid $instockIndigo-interactiveElements;
+      outline: none;
+    }
+  }
+
+  &__add-button {
+    width: 100%;
+    background-color: $instockIndigo-interactiveElements;
+    border-radius: 20px;
+    border: none;
+    height: 36px;
+    margin-top: 1rem;
+    color: $white-globalWhite;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    flex-direction: column;
+    border-top: 2px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    border-bottom: 2px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  }
+  &__info-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__info-item {
+    flex: 1 1 45%;
+
+    &--actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  &__info {
+    margin: 0;
+  }
+
+  &__sub-title {
+    margin-bottom: 0.5rem;
+    color: $slate-tableColumnHeaders-placeholderText;
+  }
+}
+
+.link-arrow {
+  display: flex;
+  align-items: center;
+}
