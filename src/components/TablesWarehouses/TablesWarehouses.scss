@@ -91,6 +91,10 @@
     color: $slate-tableColumnHeaders-placeholderText;
     font-size: $mobile-h4TableHeader_textSize;
   }
+
+  &__icons {
+    cursor: pointer;
+  }
 }
 
 .link-arrow {
