@@ -1,0 +1,11 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/variables" as *;
+
+.footer {
+  color: $slate-tableColumnHeaders-placeholderText;
+  background-color: $white-globalWhite;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  border-bottom: 7rem solid$lightGrey-pageBG-tableColumnHeadersBG-ctaBG;
+}
