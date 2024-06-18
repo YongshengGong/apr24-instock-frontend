@@ -37,9 +37,11 @@
     line-height: $mobile-h1PageHeader_lineHeight;
     padding-top: 2rem;
     font-family: "titillium";
+    margin-bottom: 1.5rem;
 
     @include tablet {
       padding-top: 0;
+      margin: 2rem;
     }
   }
 
@@ -88,6 +90,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding-bottom: 1rem;
 
     @include tablet {
       flex-direction: row;
@@ -128,10 +131,14 @@
     margin: 0;
 
     &--address {
-      margin-right: 3rem;
+      @include tablet {
+        margin-right: 3rem;
+      }
     }
     &--name {
-      padding-left: 2rem;
+      @include desktop {
+        padding-left: 2rem;
+      }
     }
   }
 
@@ -185,16 +192,24 @@
     }
 
     &--contact {
-      margin-left: 3rem;
+      margin-left: 0rem;
+
+      @include desktop {
+        margin-right: 1rem;
+      }
     }
     &--contact-info {
       margin-right: 4rem;
+
+      @include desktop {
+        margin-right: 4rem;
+      }
     }
     &--action {
       padding-right: 3rem;
     }
+    .filter-icon {
+      height: 16px;
+    }
   }
-}
-.filter-icon {
-  height: 16px;
 }
