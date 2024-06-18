@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
+import Inventory from './pages/Inventory/Inventory';
 import './App.scss'
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/" element={<HomePage button="warehousesButton" />}></Route>
+        <Route path="/inventory" element={<Inventory button="inventoryButton" />}></Route>
       </Routes>
     </BrowserRouter>
   )

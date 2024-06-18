@@ -1,0 +1,84 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables/" as *;
+@use "../../styles/partials/topography" as *;
+
+.header {
+    height: 14rem;
+    width: 100vw;
+    background-color: $graphite-navHeaderBG;
+    @include flex(column, flex-start, center);
+
+    &__logo {
+        margin-top: 1.5rem;
+        height: 2rem;
+    }
+
+    &__nav {
+        width: 100%;
+        margin-top: 1.5rem;
+
+        &-list {
+            width: 100%;
+            list-style: none;
+            padding-left: 0;
+            @include flex(row, space-around, center);
+
+            &-warehouses,
+            &-inventory {
+                @include flex(row, space-around, center);
+                width: 35%;
+
+                & .activeButton {
+                    width: 100%;
+                    background-color: $instockBlack-globalText;
+                    border-radius: 1.25rem;
+                    height: 2.25rem;
+                    border: none;
+
+                    & a {
+                        color: $white-globalWhite;
+                        font-size: $mobile-h3LabelsLinksButtons_textSize;
+                        line-height: $mobile-h3LabelsLinksButtons_lineHeight;
+                        font-family: titillium;
+                        font-weight: 400;
+                        font-style: normal;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration-thickness: 1px;
+                            text-decoration-color: $cloud-outlines-dividers-borders-tableSortingIcon;
+                            text-decoration-style: solid;
+                            text-decoration-line: underline;
+                        }
+                    }
+                }
+
+                & .inactiveButton {
+                    width: 100%;
+                    background-color: $graphite-navHeaderBG;
+                    border-radius: 1.25rem;
+                    height: 2.25rem;
+                    border: none;
+
+                    & a {
+                        color: $white-globalWhite;
+                        font-size: $mobile-h3LabelsLinksButtons_textSize;
+                        line-height: $mobile-h3LabelsLinksButtons_lineHeight;
+                        font-family: titillium;
+                        font-weight: 400;
+                        font-style: normal;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration-thickness: 1px;
+                            text-decoration-color: $cloud-outlines-dividers-borders-tableSortingIcon;
+                            text-decoration-style: solid;
+                            text-decoration-line: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,15 +1,15 @@
-import "./HomePage.scss"
+import "./Inventory.scss"
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-function HomePage({ button }) {
+function Inventory({button}) {
     return (
         <>
             <Header button={button} />
             <main>
-                main
+                inventory
             </main>
             <Footer />
         </>
     )
 }
-export default HomePage;
+export default Inventory;
