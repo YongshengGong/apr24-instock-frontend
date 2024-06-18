@@ -2,11 +2,21 @@ import "../EditInventoryItem/EditInventoryItem.scss";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
 const EditInventoryItem = () => {
   return (
     <main className="edit-inventory">
-      <h1 className="edit-inventory__title">Edit Inventory Item</h1>
+      <div className="edit-inventory__title">
+        <Link className="edit-inventory__back-button-link" to={"/"}>
+          <img
+            className="edit-inventory__back-button"
+            src={backArrowLogo}
+            alt="back button"
+          />
+        </Link>
+        <h1 className="edit-inventory__title-text">Edit Inventory Item</h1>
+      </div>
       <form className="edit-inventory__form">
         <div className="edit-inventory__form-info">
           <div className="item-details">

@@ -1,0 +1,22 @@
+@use "../../styles/partials/resets" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/topography" as *;
+@use "../../styles/partials/variables" as *;
+
+.edit-inventory {
+  margin: 1rem;
+  border-radius: 4px;
+  background-color: $white-globalWhite;
+  display: flex;
+  flex-direction: column;
+  color: $instockBlack-globalText;
+
+  &__title {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h1PageHeader_textSize;
+    line-height: $mobile-h1PageHeader_lineHeight;
+    // flex-direction: row;
+  }
+}
