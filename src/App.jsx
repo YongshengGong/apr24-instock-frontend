@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import Inventory from "./pages/Inventory/Inventory";
+import WarehousePage from "./pages/WarehousePage/WarehousePage";
 import "./App.scss";
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<HomePage button="warehousesButton" />}
+          element={<WarehousePage button="warehousesButton" />}
         ></Route>
         <Route
           path="/inventory"

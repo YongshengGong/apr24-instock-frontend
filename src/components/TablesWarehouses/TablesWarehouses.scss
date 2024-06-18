@@ -8,6 +8,12 @@
   margin: auto;
   border-radius: 4px;
   font-family: "titillium";
+  @include tablet {
+    width: 90%;
+  }
+  @include desktop {
+    width: 80%;
+  }
 
   &__header {
     padding: 0 1rem;
@@ -70,15 +76,35 @@
     flex-direction: column;
     border-top: 2px solid $cloud-outlines-dividers-borders-tableSortingIcon;
     border-bottom: 2px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+
+    @include tablet {
+      display: block;
+      padding: 2rem 1rem;
+      margin-top: 0;
+      border-top: none;
+    }
   }
   &__info-group {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+    }
   }
   &__info-item {
     max-width: 40vw;
     flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include tablet {
+      flex: 1;
+      margin-left: 1rem;
+    }
 
     &--actions {
       display: flex;
@@ -88,17 +114,35 @@
       padding-right: 1rem;
       max-width: 100%;
       margin-top: 1rem;
+
+      @include tablet {
+        justify-content: space-evenly;
+      }
+
+      @include desktop {
+      }
     }
   }
 
   &__info {
     margin: 0;
+
+    &--address {
+      margin-right: 3rem;
+    }
+    &--name {
+      padding-left: 2rem;
+    }
   }
 
   &__sub-title {
     margin-bottom: 0.5rem;
     color: $slate-tableColumnHeaders-placeholderText;
     font-size: $mobile-h4TableHeader_textSize;
+
+    @include tablet {
+      display: none;
+    }
   }
 
   &__icons {
@@ -109,4 +153,48 @@
 .link-arrow {
   display: flex;
   align-items: center;
+}
+
+// Filter Bar
+.table-headers {
+  display: none;
+  @include tablet {
+    font-size: $tabletDesktop-h4TableHeader_textSize;
+  }
+  &__list {
+    display: none;
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      padding: 0rem 2rem;
+      list-style-type: none;
+      align-items: center;
+      font-size: $tabletDesktop-h4TableHeader_textSize;
+      background-color: $lightGrey-pageBG-tableColumnHeadersBG-ctaBG;
+      height: 2.5rem;
+      margin: 0;
+    }
+  }
+
+  &__item {
+    @include tablet {
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &--contact {
+      margin-left: 3rem;
+    }
+    &--contact-info {
+      margin-right: 4rem;
+    }
+    &--action {
+      padding-right: 3rem;
+    }
+  }
+}
+.filter-icon {
+  height: 16px;
 }

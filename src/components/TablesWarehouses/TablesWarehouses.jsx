@@ -1,6 +1,7 @@
 import chevron from "../../assets/images/icons/nav/chevron_right-24px.svg";
 import trashcan from "../../assets/images/icons/action/delete_outline-24px.svg";
 import editicon from "../../assets/images/icons/action/edit-24px.svg";
+import filtericon from "../../assets/images/icons/nav/sort-default.svg";
 import "./TablesWarehouses.scss";
 import PrimaryButton from "../CallToActions/PrimaryButton";
 
@@ -19,6 +20,28 @@ const TablesWarehouses = () => {
           <PrimaryButton />
         </div>
       </header>
+      <ul className="table-headers__list">
+        <li className="table-headers__item">
+          <p>WAREHOUSE</p>
+          <img src={filtericon} className="filter-icon" />
+        </li>
+        <li className="table-headers__item">
+          <p>ADDRESS</p>
+          <img src={filtericon} className="filter-icon" />
+        </li>
+        <li className="table-headers__item table-headers__item--contact">
+          <p>CONTACT NAME</p>
+          <img src={filtericon} className="filter-icon" />
+        </li>
+        <li className="table-headers__item table-headers__item--contact-info">
+          <p>CONTACT INFORMATION</p>
+          <img src={filtericon} className="filter-icon" />
+        </li>
+        <li className="table-headers__item table-headers__item--action">
+          <p>ACTIONS</p>
+          <img src={filtericon} className="filter-icon" />
+        </li>
+      </ul>
 
       {/* Had to rewrite entire thing. Was breaking my brain for a second */}
       <ul className="warehouses__list">
@@ -33,11 +56,15 @@ const TablesWarehouses = () => {
             </div>
             <div className="warehouses__info-item">
               <p className="warehouses__sub-title">ADDRESS</p>
-              <p className="warehouses__info">503 Broadway, New York, USA</p>
+              <p className="warehouses__info warehouses__info--address">
+                503 Broadway, New York, USA
+              </p>
             </div>
             <div className="warehouses__info-item">
               <p className="warehouses__sub-title">CONTACT NAME</p>
-              <p className="warehouses__info">Parmin Aujla</p>
+              <p className="warehouses__info warehouses__info--name">
+                Parmin Aujla
+              </p>
             </div>
             <div className="warehouses__info-item">
               <p className="warehouses__sub-title">CONTACT INFORMATION</p>
