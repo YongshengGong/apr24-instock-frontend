@@ -7,15 +7,34 @@
   width: 95%;
   margin: auto;
   border-radius: 4px;
+  font-family: "titillium";
+
   &__header {
     padding: 0 1rem;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   &__header-container {
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      min-width: 50vw;
+    }
   }
   &__title {
     font-size: $mobile-h1PageHeader_textSize;
     line-height: $mobile-h1PageHeader_lineHeight;
     padding-top: 2rem;
+    font-family: "titillium";
+
+    @include tablet {
+      padding-top: 0;
+    }
   }
 
   &__search {
@@ -25,23 +44,13 @@
     text-indent: 1rem;
     border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
 
+    @include tablet {
+      margin-right: 1rem;
+    }
+
     &:focus {
       border: 1px solid $instockIndigo-interactiveElements;
       outline: none;
-    }
-  }
-
-  &__add-button {
-    width: 100%;
-    background-color: $instockIndigo-interactiveElements;
-    border-radius: 20px;
-    border: none;
-    height: 36px;
-    margin-top: 1rem;
-    color: $white-globalWhite;
-
-    &:hover {
-      background-color: $graphite-navHeaderBG;
     }
   }
 
