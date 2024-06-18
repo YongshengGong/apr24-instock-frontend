@@ -20,6 +20,7 @@ const EditInventoryItem = () => {
       <form className="edit-inventory__form">
         <div className="edit-inventory__form-info">
           <div className="item-details">
+            <h2 className="item-details__title">Item Details</h2>
             <label className="item-details__name-label">
               Item Name
               <input
@@ -50,8 +51,9 @@ const EditInventoryItem = () => {
             </label>
           </div>
           <div className="item-availability">
+            <h2 className="item-availability__title">Item Availability</h2>
             <div className="item-availability-status">
-              <h2 className="item-availability-status__title">Status</h2>
+              <h3 className="item-availability-status__title">Status</h3>
               <div className="item-availability-status__radios">
                 <label className="item-availability-status__radio-label">
                   In stock
@@ -70,10 +72,10 @@ const EditInventoryItem = () => {
                   ></input>
                 </label>
               </div>
-              <label className="item-availability-warehouse-label">
+              <label className="item-availability__warehouse-label">
                 Warehouse
                 <select
-                  className="item-availability-warehouse"
+                  className="item-availability__warehouse"
                   name="warehouse"
                 >
                   <option value="">--Please choose an option--</option>
