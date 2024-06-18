@@ -1,9 +1,10 @@
 import chevron from "../../assets/images/icons/nav/chevron_right-24px.svg";
 import trashcan from "../../assets/images/icons/action/delete_outline-24px.svg";
 import editicon from "../../assets/images/icons/action/edit-24px.svg";
-import "./WarehouseList.scss";
+import "./TablesWarehouses.scss";
+import PrimaryButton from "../CallToActions/PrimaryButton";
 
-const WarehouseList = () => {
+const TablesWarehouses = () => {
   return (
     <section className="warehouses">
       <header className="warehouses__header">
@@ -15,9 +16,7 @@ const WarehouseList = () => {
             className="warehouses__search"
             placeholder="Search..."
           />
-          <button className="warehouses__add-button">
-            + Add New Warehouse
-          </button>
+          <PrimaryButton />
         </div>
       </header>
 
@@ -56,4 +55,4 @@ const WarehouseList = () => {
   );
 };
 
-export default WarehouseList;
+export default TablesWarehouses;
