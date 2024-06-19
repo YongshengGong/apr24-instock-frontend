@@ -53,9 +53,9 @@ const TablesWarehouses = () => {
             <div className="warehouses__info-item">
               <p className="warehouses__sub-title">WAREHOUSE</p>
               <div className="link-arrow">
-                <p className="warehouses__info warehouses__info--warehouse">
+                <Link to="/details" className="warehouses__info warehouses__info--warehouse">
                   Manhattan
-                </p>
+                </Link>
                 <img src={chevron} alt="Enter Arrow" />
               </div>
             </div>

@@ -4,10 +4,10 @@ import "./WarehousePage.scss";
 import WarehouseList from "../../components/TablesWarehouses/TablesWarehouses";
 import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 
-function WarehousePage() {
+function WarehousePage({button}) {
   return (
     <>
-      <Header />
+      <Header button={button}/>
       <WarehouseList />
       <Footer />
     </>

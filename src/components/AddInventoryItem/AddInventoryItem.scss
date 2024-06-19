@@ -4,8 +4,9 @@
 @use "../../styles/partials/topography" as *;
 @use "../../styles/partials/variables" as *;
 
-.edit-inventory {
+.add-inventory {
   width: calc(100vw - 3rem);
+  // margin: 1rem;
   border-radius: 4px;
   background-color: $white-globalWhite;
   display: flex;
@@ -14,7 +15,6 @@
   margin:0 auto;
   margin-top:-4.5rem;
   border:1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
-  
 
   @include tablet {
     width: calc(100vw - 3rem);
@@ -47,7 +47,7 @@
     line-height: $mobile-h1PageHeader_lineHeight;
   }
 }
-.edit-inventory__form {
+.add-inventory__form {
   display: flex;
   flex-direction: column;
 
@@ -171,9 +171,6 @@
     @include tablet {
       height: 2.375rem;
     }
-    // &::placeholder {
-    //   color: $cloud-outlines-dividers-borders-tableSortingIcon;
-    // }
 
     &:focus {
       border: 1px solid $instockIndigo-interactiveElements;
@@ -198,6 +195,51 @@
     font-size: $mobile-h2SubHeader_textSize;
     line-height: $mobile-h2SubHeader_lineHeight;
     margin-bottom: 1rem;
+  }
+  &__quantity-info {
+    display: flex;
+    flex-direction: column;
+  }
+  &__quantity-label {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h3LabelsLinksButtons_textSize;
+    line-height: $mobile-h3LabelsLinksButtons_lineHeight;
+    margin-bottom: 1rem;
+  }
+  &__quantity-span {
+    display: block;
+  }
+  &__quantity {
+    font-family: titillium;
+    font-weight: 400;
+    font-size: $tabletDesktop-p3BodySmall_textSize;
+    line-height: $tabletDesktop-p3BodySmall_lineHeight;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    padding: 0.5rem 1rem;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    color: $instockBlack-globalText;
+    height: 2.25rem;
+    appearance: none;
+
+    @include tablet {
+      height: 2.375rem;
+    }
+
+    @include desktop {
+      width: auto;
+    }
+
+    &::placeholder {
+      color: $cloud-outlines-dividers-borders-tableSortingIcon;
+    }
+    &:focus {
+      border: 1px solid $instockIndigo-interactiveElements;
+      outline: none;
+    }
   }
   &__warehouse-label {
     font-family: titillium;
@@ -245,16 +287,13 @@
   &__radios {
     display: flex;
     flex-direction: row;
-    // justify-content: space-between;
+
     margin-top: 0.25rem;
     margin-bottom: 1rem;
   }
 
   &__radio {
     margin-right: 0.5rem;
-    // &:checked {
-    //   color: $instockBlack-globalText;
-    // }
   }
 
   &__radio-label {
@@ -270,7 +309,7 @@
     }
   }
 }
-.edit-inventory__form-buttons {
+.add-inventory__form-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -278,14 +317,11 @@
   padding: 1rem;
 
   @include tablet {
-    // display: flex;
-    // flex-direction: row;
     justify-content: flex-end;
-    // padding: 1rem;
   }
 }
 
-.edit-inventory__form-cancel-button-link {
+.add-inventory__form-cancel-button-link {
   text-decoration: none;
   width: 100%;
 
@@ -294,7 +330,7 @@
   }
 }
 
-.edit-inventory__form-cancel-button {
+.add-inventory__form-cancel-button {
   background-color: $white-globalWhite;
   color: $cloud-outlines-dividers-borders-tableSortingIcon;
   border-radius: 20px;
@@ -307,7 +343,7 @@
   border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
 }
 
-.edit-inventory__form-save-button-link {
+.add-inventory__form-save-button-link {
   text-decoration: none;
   width: 100%;
   margin: 1rem;
@@ -316,7 +352,7 @@
   }
 }
 
-.edit-inventory__form-save-button {
+.add-inventory__form-save-button {
   background-color: $instockIndigo-interactiveElements;
   color: $white-globalWhite;
   border-radius: 20px;

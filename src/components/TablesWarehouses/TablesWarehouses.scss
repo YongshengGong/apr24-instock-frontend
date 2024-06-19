@@ -4,15 +4,23 @@
 @use "../../styles/partials/variables" as *;
 
 .warehouses {
-  width: 95%;
-  margin: auto;
+  width: calc(100vw - 3rem);
   border-radius: 4px;
   font-family: "titillium";
+  margin:0 auto;
+  margin-top:-4.5rem;
+  border:1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  background-color: $white-globalWhite;
   @include tablet {
-    width: 90%;
+    width: calc(100vw - 3rem);
+    margin:0 auto;
+    margin-top:-6.25rem;
   }
+
   @include desktop {
-    width: 80%;
+    width: calc(100vw - 12rem);
+    margin:0 auto;
+    margin-top:-6.25rem;
   }
 
   &__header {
@@ -23,9 +31,20 @@
       flex-direction: row;
       justify-content: space-between;
     }
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   &__header-container {
     @include tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      min-width: 50vw;
+    }
+    @include desktop {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -83,8 +102,8 @@
     margin-bottom: 1rem;
     margin-top: 2rem;
     flex-direction: column;
-    border-top: 2px solid $cloud-outlines-dividers-borders-tableSortingIcon;
-    border-bottom: 2px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    border-top: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+   
 
     @include tablet {
       display: block;
@@ -139,6 +158,7 @@
 
     &--warehouse {
       color: $instockIndigo-interactiveElements;
+      text-decoration: none;
       &:hover {
         text-decoration: underline;
         text-decoration-color: $instockIndigo-interactiveElements;
@@ -148,11 +168,6 @@
     &--address {
       @include tablet {
         margin-right: 3rem;
-      }
-    }
-    &--name {
-      @include desktop {
-        padding-left: 2rem;
       }
     }
   }
