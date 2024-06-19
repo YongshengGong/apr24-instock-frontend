@@ -16,6 +16,9 @@
   @include tablet {
     margin-top: 0;
   }
+  @include desktop {
+    margin-top: 0;
+  }
 
   &:hover {
     background-color: $graphite-navHeaderBG;

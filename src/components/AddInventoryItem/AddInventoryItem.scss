@@ -5,24 +5,27 @@
 @use "../../styles/partials/variables" as *;
 
 .add-inventory {
-  width: 95%;
-  margin: 1rem;
+  width: calc(100vw - 3rem);
+  // margin: 1rem;
   border-radius: 4px;
   background-color: $white-globalWhite;
   display: flex;
   flex-direction: column;
   color: $instockBlack-globalText;
-  position: absolute;
-  top: 7rem;
+  margin:0 auto;
+  margin-top:-4.5rem;
+  border:1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
 
   @include tablet {
-    width: 90%;
-    margin: 0 2rem;
+    width: calc(100vw - 3rem);
+    margin:0 auto;
+    margin-top:-6.25rem;
   }
 
   @include desktop {
-    width: 80%;
-    margin: 0 10rem;
+    width: calc(100vw - 12rem);
+    margin:0 auto;
+    margin-top:-6.25rem;
   }
 
   &__back-button-link {

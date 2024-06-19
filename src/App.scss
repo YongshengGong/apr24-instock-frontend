@@ -1,1 +1,6 @@
 @use "./styles/partials/resets";
+@use "./src/styles/partials/colors" as *;
+html{
+    background-color:$lightGrey-pageBG-tableColumnHeadersBG-ctaBG;
+    height:100%;
+}
