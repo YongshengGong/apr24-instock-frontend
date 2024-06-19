@@ -1,5 +1,6 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .footer {
   color: $slate-tableColumnHeaders-placeholderText;
@@ -7,5 +8,15 @@
   text-align: center;
   padding: 20px;
   width: 100%;
-  border-bottom: 7rem solid$lightGrey-pageBG-tableColumnHeadersBG-ctaBG;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet {
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  // @include desktop {
+  //   @include;
+  // }
 }
