@@ -8,8 +8,10 @@ function WarehouseDetailsPage() {
   return (
     <>
       <Header />
-      <WarehouseDetails />
-      <WarehouseInventoryList />
+      <main>
+        <WarehouseDetails />
+        <WarehouseInventoryList />
+      </main>
       <Footer />
     </>
   );
