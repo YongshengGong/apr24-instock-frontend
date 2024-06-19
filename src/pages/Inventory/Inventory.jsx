@@ -7,7 +7,6 @@ function Inventory({ button }) {
     <>
       <Header button={button} />
       <EditInventoryItem />
-      <main>inventory</main>
       <Footer />
     </>
   );

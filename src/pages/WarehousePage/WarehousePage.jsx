@@ -3,10 +3,10 @@ import Footer from "../../components/Footer/Footer";
 import "./WarehousePage.scss";
 import WarehouseList from "../../components/TablesWarehouses/TablesWarehouses";
 
-function WarehousePage() {
+function WarehousePage({button}) {
   return (
     <>
-      <Header />
+      <Header button={button}/>
       <WarehouseList />
       <Footer />
     </>
