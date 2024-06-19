@@ -77,6 +77,7 @@ const TablesWarehouses = () => {
               <p className="warehouses__info">paujla@instock.com</p>
             </div>
             <div className="warehouses__info-item warehouses__info-item--actions">
+              {/* Need to Wrap these in Links! */}
               <img src={trashcan} alt="Delete" className="warehouses__icon" />
               <img src={editicon} alt="Edit" className="warehouses__icon" />
             </div>
