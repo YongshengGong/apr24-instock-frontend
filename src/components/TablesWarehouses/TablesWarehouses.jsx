@@ -4,6 +4,9 @@ import editicon from "../../assets/images/icons/action/edit-24px.svg";
 import filtericon from "../../assets/images/icons/nav/sort-default.svg";
 import "./TablesWarehouses.scss";
 import PrimaryButton from "../CallToActions/PrimaryButton";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const TablesWarehouses = () => {
   return (
