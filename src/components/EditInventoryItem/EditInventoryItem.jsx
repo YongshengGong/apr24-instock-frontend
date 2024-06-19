@@ -27,7 +27,7 @@ const EditInventoryItem = () => {
                 className="item-details__name"
                 type="text"
                 name="itemName"
-                placeholder="type item name"
+                placeholder="Item Name"
               ></input>
             </label>
             <label className="item-details__description-label">
@@ -35,13 +35,17 @@ const EditInventoryItem = () => {
               <textarea
                 className="item-details__description"
                 name="descrition"
-                placeholder="Add a description"
+                placeholder="Description"
               ></textarea>
             </label>
             <label className="item-details__category-label">
               Category
-              <select className="item-details__category" name="category">
-                <option value="">--Please choose an option--</option>
+              <select
+                className="item-details__category"
+                name="category"
+                // placeholder="Please select"
+              >
+                <option value="">Please select</option>
                 <option value="electronics">Electronics</option>
                 <option value="gear">Gear</option>
                 <option value="apparel">Apparel</option>
@@ -56,20 +60,20 @@ const EditInventoryItem = () => {
               <h3 className="item-availability-status__title">Status</h3>
               <div className="item-availability-status__radios">
                 <label className="item-availability-status__radio-label">
-                  In stock
                   <input
                     className="item-availability-status__radio"
                     type="radio"
-                    name="radioInStock"
+                    name="radio"
                   ></input>
+                  In stock
                 </label>
                 <label className="item-availability-status__radio-label">
-                  Out of stock
                   <input
                     className="item-availability-status__radio"
                     type="radio"
-                    name="radioOutOfStock"
+                    name="radio"
                   ></input>
+                  Out of stock
                 </label>
               </div>
               <label className="item-availability__warehouse-label">
@@ -77,8 +81,9 @@ const EditInventoryItem = () => {
                 <select
                   className="item-availability__warehouse"
                   name="warehouse"
+                  //   placeholder="Please select"
                 >
-                  <option value="">--Please choose an option--</option>
+                  <option value="">Please select</option>
                   <option value="manhattan">Manhattan</option>
                   <option value="washington">Washington</option>
                   <option value="jersey">Jersey</option>

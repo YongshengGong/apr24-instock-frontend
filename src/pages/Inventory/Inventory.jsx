@@ -1,15 +1,15 @@
-import "./Inventory.scss"
+import "./Inventory.scss";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-function Inventory({button}) {
-    return (
-        <>
-            <Header button={button} />
-            <main>
-                inventory
-            </main>
-            <Footer />
-        </>
-    )
+import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
+function Inventory({ button }) {
+  return (
+    <>
+      <Header button={button} />
+      <EditInventoryItem />
+      <main>inventory</main>
+      <Footer />
+    </>
+  );
 }
 export default Inventory;
