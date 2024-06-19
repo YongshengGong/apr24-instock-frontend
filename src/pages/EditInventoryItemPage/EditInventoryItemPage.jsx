@@ -1,15 +1,16 @@
-import "./Inventory.scss";
+import "../EditInventoryItemPage/EditInventoryItemPage.scss";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
-function Inventory({ button }) {
+function EditInventoryItemPage() {
   return (
     <>
-      <Header button={button} />
-      <EditInventoryItem />
-      <main>inventory</main>
+      <Header />
+      <main>
+        <EditInventoryItem />
+      </main>
       <Footer />
     </>
   );
 }
-export default Inventory;
+export default EditInventoryItemPage;

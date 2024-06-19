@@ -1,0 +1,327 @@
+@use "../../styles/partials/resets" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/topography" as *;
+@use "../../styles/partials/variables" as *;
+
+.edit-inventory {
+  width: 95%;
+  margin: 1rem;
+  border-radius: 4px;
+  background-color: $white-globalWhite;
+  display: flex;
+  flex-direction: column;
+  color: $instockBlack-globalText;
+  position: absolute;
+  top: 7rem;
+
+  @include tablet {
+    width: 90%;
+    margin: 0 2rem;
+  }
+
+  @include desktop {
+    width: 80%;
+    margin: 0 10rem;
+  }
+
+  &__back-button-link {
+    margin-right: 1rem;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding: 2rem;
+    border-bottom: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  }
+
+  &__title-text {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h1PageHeader_textSize;
+    line-height: $mobile-h1PageHeader_lineHeight;
+  }
+}
+.edit-inventory__form {
+  display: flex;
+  flex-direction: column;
+
+  &-info {
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      padding: 1rem;
+    }
+  }
+}
+
+.item-details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+
+  @include tablet {
+    width: 50%;
+    border-bottom: 0px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    border-right: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  }
+
+  &__title {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h2SubHeader_textSize;
+    line-height: $mobile-h2SubHeader_lineHeight;
+    margin-bottom: 1rem;
+  }
+
+  &__name-label {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h3LabelsLinksButtons_textSize;
+    line-height: $mobile-h3LabelsLinksButtons_lineHeight;
+    margin-bottom: 1rem;
+  }
+  &__name {
+    font-family: titillium;
+    font-weight: 400;
+    font-size: $tabletDesktop-p3BodySmall_textSize;
+    line-height: $tabletDesktop-p3BodySmall_lineHeight;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    padding: 0.5rem 1rem;
+    margin-top: 0.25rem;
+    color: $instockBlack-globalText;
+    height: 2.25rem;
+
+    @include tablet {
+      height: 2.375rem;
+    }
+
+    &::placeholder {
+      color: $cloud-outlines-dividers-borders-tableSortingIcon;
+    }
+    &:focus {
+      border: 1px solid $instockIndigo-interactiveElements;
+      outline: none;
+    }
+  }
+
+  &__description-label {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h3LabelsLinksButtons_textSize;
+    line-height: $mobile-h3LabelsLinksButtons_lineHeight;
+    margin-bottom: 1rem;
+  }
+  &__description {
+    font-family: titillium;
+    font-weight: 400;
+    font-size: $tabletDesktop-p3BodySmall_textSize;
+    line-height: $tabletDesktop-p3BodySmall_lineHeight;
+    width: 100%;
+    height: 7rem;
+    border-radius: 20px;
+    border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    resize: none;
+    padding: 0.5rem 1rem;
+    margin-top: 0.25rem;
+    color: $instockBlack-globalText;
+
+    &::placeholder {
+      color: $cloud-outlines-dividers-borders-tableSortingIcon;
+    }
+
+    &:focus {
+      border: 1px solid $instockIndigo-interactiveElements;
+      outline: none;
+    }
+  }
+  &__category-label {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h3LabelsLinksButtons_textSize;
+    line-height: $mobile-h3LabelsLinksButtons_lineHeight;
+    margin-bottom: 0.5rem;
+  }
+  &__category {
+    font-family: titillium;
+    font-weight: 400;
+    font-size: $tabletDesktop-p3BodySmall_textSize;
+    line-height: $tabletDesktop-p3BodySmall_lineHeight;
+    width: 100%;
+    border-radius: 20px;
+    background-image: url(../../assets/images/icons/nav/dropDown-default.svg);
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: 0.4375rem;
+    padding: 0.25rem 1rem;
+    border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    appearance: none;
+    margin-top: 0.25rem;
+    color: $cloud-outlines-dividers-borders-tableSortingIcon;
+    height: 2.25rem;
+
+    @include tablet {
+      height: 2.375rem;
+    }
+    // &::placeholder {
+    //   color: $cloud-outlines-dividers-borders-tableSortingIcon;
+    // }
+
+    &:focus {
+      border: 1px solid $instockIndigo-interactiveElements;
+      outline: none;
+      color: $instockBlack-globalText;
+    }
+  }
+}
+
+.item-availability {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    width: 50%;
+  }
+
+  &__title {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h2SubHeader_textSize;
+    line-height: $mobile-h2SubHeader_lineHeight;
+    margin-bottom: 1rem;
+  }
+  &__warehouse-label {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h3LabelsLinksButtons_textSize;
+    line-height: $mobile-h3LabelsLinksButtons_lineHeight;
+  }
+  &__warehouse {
+    font-family: titillium;
+    font-weight: 400;
+    font-size: $tabletDesktop-p3BodySmall_textSize;
+    line-height: $tabletDesktop-p3BodySmall_lineHeight;
+    width: 100%;
+    border-radius: 20px;
+    background-image: url(../../assets/images/icons/nav/dropDown-default.svg);
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: 0.4375rem;
+    padding: 0.25rem 1rem;
+    border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    appearance: none;
+    margin-top: 0.25rem;
+    color: $cloud-outlines-dividers-borders-tableSortingIcon;
+    height: 2.25rem;
+
+    @include tablet {
+      height: 2.375rem;
+    }
+    &:focus {
+      border: 1px solid $instockIndigo-interactiveElements;
+      outline: none;
+      color: $instockBlack-globalText;
+    }
+  }
+}
+
+.item-availability-status {
+  &__title {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h3LabelsLinksButtons_textSize;
+    line-height: $mobile-h3LabelsLinksButtons_lineHeight;
+  }
+
+  &__radios {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  &__radio {
+    margin-right: 0.5rem;
+    // &:checked {
+    //   color: $instockBlack-globalText;
+    // }
+  }
+
+  &__radio-label {
+    font-family: titillium;
+    font-weight: 400;
+    font-size: $tabletDesktop-p3BodySmall_textSize;
+    line-height: $tabletDesktop-p3BodySmall_lineHeight;
+    color: $cloud-outlines-dividers-borders-tableSortingIcon;
+    margin-right: 5rem;
+
+    &:focus-within {
+      color: $instockBlack-globalText;
+    }
+  }
+}
+.edit-inventory__form-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $lightGrey-pageBG-tableColumnHeadersBG-ctaBG;
+  padding: 1rem;
+
+  @include tablet {
+    // display: flex;
+    // flex-direction: row;
+    justify-content: flex-end;
+    // padding: 1rem;
+  }
+}
+
+.edit-inventory__form-cancel-button-link {
+  text-decoration: none;
+  width: 100%;
+
+  @include tablet {
+    width: auto;
+  }
+}
+
+.edit-inventory__form-cancel-button {
+  background-color: $white-globalWhite;
+  color: $cloud-outlines-dividers-borders-tableSortingIcon;
+  border-radius: 20px;
+  width: 100%;
+  height: 2.25rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+}
+
+.edit-inventory__form-save-button-link {
+  text-decoration: none;
+  width: 100%;
+  margin: 1rem;
+  @include tablet {
+    width: auto;
+  }
+}
+
+.edit-inventory__form-save-button {
+  background-color: $instockIndigo-interactiveElements;
+  color: $white-globalWhite;
+  border-radius: 20px;
+  width: 100%;
+  height: 2.25rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
