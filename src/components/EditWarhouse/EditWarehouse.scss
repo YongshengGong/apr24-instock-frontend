@@ -4,7 +4,7 @@
 @use "../../styles/partials/topography" as *;
 @use "../../styles/partials/variables" as *;
 
-.edit-inventory {
+.edit-warehouse {
   width: calc(100vw - 3rem);
   border-radius: 4px;
   background-color: $white-globalWhite;
@@ -46,7 +46,7 @@
     line-height: $mobile-h1PageHeader_lineHeight;
   }
 }
-.edit-inventory__form {
+.edit-warehouse__form {
   display: flex;
   flex-direction: column;
 
@@ -269,7 +269,7 @@
     }
   }
 }
-.edit-inventory__form-buttons {
+.edit-warehouse__form-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -284,7 +284,7 @@
   }
 }
 
-.edit-inventory__form-cancel-button-link {
+.edit-warehouse__form-cancel-button-link {
   text-decoration: none;
   width: 100%;
 
@@ -293,7 +293,7 @@
   }
 }
 
-.edit-inventory__form-cancel-button {
+.edit-warehouse__form-cancel-button {
   background-color: $white-globalWhite;
   color: $cloud-outlines-dividers-borders-tableSortingIcon;
   border-radius: 20px;
@@ -306,7 +306,7 @@
   border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
 }
 
-.edit-inventory__form-save-button-link {
+.edit-warehouse__form-save-button-link {
   text-decoration: none;
   width: 100%;
   margin: 1rem;
@@ -315,7 +315,7 @@
   }
 }
 
-.edit-inventory__form-save-button {
+.edit-warehouse__form-save-button {
   background-color: $instockIndigo-interactiveElements;
   color: $white-globalWhite;
   border-radius: 20px;
@@ -326,4 +326,27 @@
   justify-content: center;
   align-items: center;
   border: none;
+}
+
+.edit-warehouse__form-group {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-right: 7rem;
+}
+.edit-warehouse__section {
+  display: flex;
+  flex-direction: column;
+}
+.edit-warehouse__form {
+  display: flex;
+  margin-right: 7rem;
+  margin-left: 7rem;
+  justify-content: center;
+}
+
+.edit-warehouse {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 5;
+  font-weight: 400;
 }
