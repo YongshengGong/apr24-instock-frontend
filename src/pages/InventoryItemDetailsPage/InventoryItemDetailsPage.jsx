@@ -1,6 +1,6 @@
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import "../InventoryItemDetailsPage/InventoryItemDetailsPage.scss";
+import "./InventoryItemDetailsPage.scss";
 
 import InventoryItemDetails from "../../components/InventoryItemDetails/InventoryItemDetails";
 

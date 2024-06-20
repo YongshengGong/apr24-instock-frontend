@@ -7,7 +7,7 @@ import EditButton from "../CallToActions/EditButtonWhite";
 
 function InventoryItemDetails() {
   return (
-    <section>
+    <section className="item-details">
       <header className="item-details__header">
         <div className="item-details__arrow-title-container">
           <Link to={"/"} className="item-details__back-arrow-link">

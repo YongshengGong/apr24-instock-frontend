@@ -3,16 +3,27 @@
 @use "../../styles/partials/topography" as *;
 @use "../../styles/partials/variables" as *;
 
-section {
+.item-details {
   font-family: titillium;
   width: 100%;
-  margin: 0;
-  @include tablet {
-    width: 90%;
-  }
-  @include desktop {
-    width: 80%;
-  }
+  margin: auto;
+  // width: calc(100vw - 3rem);
+  // margin: 0 auto;
+  // margin-top: -6.25rem;
+  // background-color: $white-globalWhite;
+
+  // @include tablet {
+  //   margin: 0 auto;
+  //   margin-top: -4.5rem;
+  //   border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  //   border-radius: 4px;
+  // }
+
+  // @include desktop {
+  //   width: calc(100vw - 12rem);
+  //   margin: 0 auto;
+  //   margin-top: -6.25rem;
+  // }
 }
 
 .item-details {
