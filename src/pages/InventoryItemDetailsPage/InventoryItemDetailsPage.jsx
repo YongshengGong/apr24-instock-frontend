@@ -8,7 +8,7 @@ function InventoryItemDetailsPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="main">
         <InventoryItemDetails />
       </main>
       <Footer />
