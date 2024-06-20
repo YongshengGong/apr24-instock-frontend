@@ -1,0 +1,41 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/topography" as *;
+
+.edit-button {
+  background-color: $instockIndigo-interactiveElements;
+  height: 36px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 20px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+
+  @include tablet {
+    width: 6rem;
+  }
+}
+
+.edit-icon {
+  fill: white;
+  width: 22px;
+  height: 22px;
+
+  @include tablet {
+    margin-right: 4px;
+  }
+}
+
+.tablet-view-button {
+  display: none;
+
+  @include tablet {
+    display: inline;
+    font-family: titillium;
+    color: $white-globalWhite;
+  }
+}
