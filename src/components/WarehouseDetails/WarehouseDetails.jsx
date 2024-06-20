@@ -17,7 +17,7 @@ function WarehouseDetails() {
           <h1 className="wh-details__title">Washington</h1>
         </div>
         {/* Need to update below link once warehouse edit page is created. */}
-        <Link to={"/"} className="wh-details__edit-button-link">
+        <Link to={"/editWarehouse"} className="wh-details__edit-button-link">
           <EditButton />
         </Link>
       </header>

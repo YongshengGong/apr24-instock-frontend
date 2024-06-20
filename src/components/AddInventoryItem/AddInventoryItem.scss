@@ -17,7 +17,6 @@
   border:1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
 
   @include tablet {
-    width: calc(100vw - 3rem);
     margin:0 auto;
     margin-top:-6.25rem;
   }
