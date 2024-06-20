@@ -1,0 +1,13 @@
+@use "../../styles/partials/resets" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/topography" as *;
+@use "../../styles/partials/variables" as *;
+
+main {
+  width: calc(100vw - 3rem);
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-top: 3rem;
+  border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+}

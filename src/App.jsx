@@ -5,6 +5,8 @@ import Inventory from "./pages/Inventory/Inventory";
 import WarehousePage from "./pages/WarehousePage/WarehousePage";
 import "./App.scss";
 import WarehouseDetailsPage from "./pages/WarehouseDetailsPage/WarehouseDetailsPage";
+import InventoryItemDetailsPage from "./pages/InventoryItemDetailsPage/InventoryItemDetailsPage";
+import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryItemPage.jsx";
 
 function App() {
   const port = import.meta.env.VITE_PORT || "http://localhost:8080";
@@ -21,7 +23,7 @@ function App() {
         ></Route>
         <Route
           path="/inventory"
-          element={<Inventory button="inventoryButton" />}
+          element={<InventoryItemDetailsPage button="inventoryButton" />}
         ></Route>
       </Routes>
     </BrowserRouter>
