@@ -56,4 +56,7 @@
     outline: none;
     color: $instockBlack-globalText;
   }
+  &--error {
+    border: 1px solid #D22D2D;
+  }
 }

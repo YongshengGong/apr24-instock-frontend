@@ -20,6 +20,18 @@ function App() {
           element={<WarehousePage button="warehousesButton" />}
         ></Route>
         <Route
+          path="/warehouses/:warehouseId"
+          element={<WarehouseDetailsPage button="warehousesButton" />}
+        ></Route>
+        <Route
+          path="/inventoryDetails"
+          element={<InventoryItemDetailsPage button="inventoryButton" />}
+        ></Route>
+        <Route
+          path="/editInventory"
+          element={<EditInventoryItemPage button="inventoryButton" />}
+        ></Route>
+        <Route
           path="/inventory"
           element={<Inventory button="inventoryButton" />}
         ></Route>
@@ -30,18 +42,6 @@ function App() {
         <Route
           path="/EditWarehouse"
           element={<EditWarehousePage button="warehousesButton" />}
-        ></Route>
-        <Route
-          path="/details"
-          element={<WarehouseDetailsPage button="warehousesButton" />}
-        ></Route>
-        <Route
-          path="/inventoryDetails"
-          element={<InventoryItemDetailsPage button="inventoryButton" />}
-        ></Route>
-        <Route
-          path="/editInventory"
-          element={<EditInventoryItemPage button="inventoryButton" />}
         ></Route>
       </Routes>
     </BrowserRouter>
