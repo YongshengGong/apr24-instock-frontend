@@ -5,15 +5,15 @@
 @use "../../styles/partials/variables" as *;
 
 .edit-inventory {
-  width: calc(100vw - 3rem);
-  border-radius: 4px;
+  // width: calc(100vw - 3rem);
+  // border-radius: 4px;
   background-color: $white-globalWhite;
   display: flex;
   flex-direction: column;
   color: $instockBlack-globalText;
-  margin: 0 auto;
-  margin-top: -4.5rem;
-  border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  // margin:0 auto;
+  // margin-top:-4.5rem;
+  // border:1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
 
   @include tablet {
     width: calc(100vw - 3rem);
