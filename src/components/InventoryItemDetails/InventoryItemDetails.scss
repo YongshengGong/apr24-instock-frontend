@@ -1,0 +1,115 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/topography" as *;
+@use "../../styles/partials/variables" as *;
+
+.item-details {
+  font-family: titillium;
+  width: 100%;
+  margin: auto;
+}
+
+.item-details {
+  &__arrow-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    width: 50%;
+    padding: 2rem 1rem;
+  }
+  &__back-arrow-link {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+  }
+  &__title {
+    font-size: $mobile-h1PageHeader_textSize;
+    line-height: $mobile-h1PageHeader_lineHeight;
+    color: $instockBlack-globalText;
+
+    @include tablet {
+      font-size: $tabletDesktop-h1PageHeader_textSize;
+      line-height: $tabletDesktop-h1PageHeader_lineHeight;
+    }
+  }
+  //   &__edit-button {
+  //     background-image: url("../../assets/images/icons/action/edit-24px.svg");
+  //     height: 36px;
+  //     padding-left: 16px;
+  //     padding-right: 16px;
+  //     border-radius: 20px;
+  //     background-repeat: no-repeat;
+  //     background-position: center;
+  //     border: none;
+  //     margin-right: 2rem;
+  //   }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    @include tablet {
+      border-bottom: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    }
+  }
+  &__info-container {
+    // padding-bottom: 1rem;
+    // padding-left: 1rem;
+
+    @include tablet {
+      padding-bottom: 0;
+    }
+
+    &--info2-info {
+      padding-right: 3rem;
+      margin-left: 4rem;
+    }
+    &--info2 {
+      @include tablet {
+        border-left: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+        padding-left: 3rem;
+      }
+    }
+  }
+  &__sub-title {
+    font-size: $mobile-h4TableHeader_textSize;
+    color: $slate-tableColumnHeaders-placeholderText;
+
+    @include tablet {
+      font-size: $tabletDesktop-h4TableHeader_textSize;
+      line-height: $tabletDesktop-h4TableHeader_lineHeight;
+    }
+  }
+  &__info {
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    font-size: $mobile-p2BodyMedium_textSize;
+    line-height: $mobile-p2BodyMedium_lineHeight;
+    @include tablet {
+      font-size: $tabletDesktop-p2BodyMedium_textSize;
+      line-height: $tabletDesktop-p2BodyMedium_lineHeight;
+    }
+  }
+  &__info2-container {
+    display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+    // margin-top: 1rem;
+  }
+}
+.info-section {
+  padding: 1rem;
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include desktop {
+    margin-right: 10rem;
+  }
+}
+
+.wh-details__edit-button-link {
+  text-decoration: none;
+}
