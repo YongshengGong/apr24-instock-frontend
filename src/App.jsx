@@ -18,7 +18,7 @@ function App() {
           element={<WarehousePage button="warehousesButton" />}
         ></Route>
         <Route
-          path="/details"
+          path="/warehouses/:warehouseId"
           element={<WarehouseDetailsPage button="warehousesButton" />}
         ></Route>
         <Route
