@@ -9,6 +9,7 @@ import AddNewWarehousePage from "./pages/AddNewWarehousePage/AddNewWarehousePage
 import EditWarehousePage from "./pages/EditWarehousePage/EditWarehousePage";
 import InventoryItemDetailsPage from "./pages/InventoryItemDetailsPage/InventoryItemDetailsPage";
 import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryItemPage.jsx";
+import EditWarehouse from "./components/EditWarehouse/EditWarehouse.jsx";
 
 function App() {
   const port = import.meta.env.VITE_PORT || "http://localhost:8080";
