@@ -3,7 +3,7 @@
 @use "../../styles/partials/topography" as *;
 @use "../../styles/partials/variables" as *;
 
-.main {
+main {
   width: calc(100vw - 3rem);
   margin: 0 auto;
   margin-top: -6.25rem;

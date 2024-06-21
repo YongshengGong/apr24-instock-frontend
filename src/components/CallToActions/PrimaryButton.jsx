@@ -1,10 +1,8 @@
 import "./PrimaryButton.scss";
-
+import { Link } from "react-router-dom";
 function PrimaryButton() {
   return (
-    <>
-      <button className="add-button">+ Add New Warehouse</button>
-    </>
+      <Link to="/addNewWarehouse" className="add-button"><span className="add-button-text">+ Add New Warehouse</span></Link>
   );
 }
 

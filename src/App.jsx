@@ -5,6 +5,8 @@ import Inventory from "./pages/Inventory/Inventory";
 import WarehousePage from "./pages/WarehousePage/WarehousePage";
 import "./App.scss";
 import WarehouseDetailsPage from "./pages/WarehouseDetailsPage/WarehouseDetailsPage";
+import AddNewWarehousePage from "./pages/AddNewWarehousePage/AddNewWarehousePage";
+import EditWarehousePage from "./pages/EditWarehousePage/EditWarehousePage";
 import InventoryItemDetailsPage from "./pages/InventoryItemDetailsPage/InventoryItemDetailsPage";
 import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryItemPage.jsx";
 import EditWarehouse from "./components/EditWarehouse/EditWarehouse.jsx";
@@ -23,13 +25,25 @@ function App() {
           element={<WarehouseDetailsPage button="warehousesButton" />}
         ></Route>
         <Route
-          path="/inventory"
+          path="/inventoryDetails"
           element={<InventoryItemDetailsPage button="inventoryButton" />}
         ></Route>
         <Route
-          path="/warehouse/edit"
-          element={<EditWarehouse button="warehousesButton" />}
-        />
+          path="/editInventory"
+          element={<EditInventoryItemPage button="inventoryButton" />}
+        ></Route>
+        <Route
+          path="/inventory"
+          element={<Inventory button="inventoryButton" />}
+        ></Route>
+        <Route
+          path="/addNewWarehouse"
+          element={<AddNewWarehousePage button="warehousesButton" />}
+        ></Route>
+        <Route
+          path="/EditWarehouse"
+          element={<EditWarehousePage button="warehousesButton" />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
