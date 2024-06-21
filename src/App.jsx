@@ -7,6 +7,7 @@ import "./App.scss";
 import WarehouseDetailsPage from "./pages/WarehouseDetailsPage/WarehouseDetailsPage";
 import InventoryItemDetailsPage from "./pages/InventoryItemDetailsPage/InventoryItemDetailsPage";
 import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryItemPage.jsx";
+import EditWarehouse from "./components/EditWarehouse/EditWarehouse.jsx";
 
 function App() {
   const port = import.meta.env.VITE_PORT || "http://localhost:8080";
@@ -25,6 +26,10 @@ function App() {
           path="/inventory"
           element={<InventoryItemDetailsPage button="inventoryButton" />}
         ></Route>
+        <Route
+          path="/warehouse/edit"
+          element={<EditWarehouse button="warehousesButton" />}
+        />
       </Routes>
     </BrowserRouter>
   );

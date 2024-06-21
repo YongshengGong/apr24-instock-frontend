@@ -1,14 +1,13 @@
 import "../EditInventoryItem/EditInventoryItem.scss";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
 const EditInventoryItem = () => {
   return (
     <main className="edit-inventory">
       <div className="edit-inventory__title">
-        <Link className="edit-inventory__back-button-link" to={"/"}>
+        <Link className="edit-inventory__back-button-link" to="/">
           <img
             className="edit-inventory__back-button"
             src={backArrowLogo}
@@ -28,23 +27,19 @@ const EditInventoryItem = () => {
                 type="text"
                 name="itemName"
                 placeholder="Item Name"
-              ></input>
+              />
             </label>
             <label className="item-details__description-label">
               Description
               <textarea
                 className="item-details__description"
-                name="descrition"
+                name="description"
                 placeholder="Description"
               ></textarea>
             </label>
             <label className="item-details__category-label">
               Category
-              <select
-                className="item-details__category"
-                name="category"
-                // placeholder="Please select"
-              >
+              <select className="item-details__category" name="category">
                 <option value="">Please select</option>
                 <option value="electronics">Electronics</option>
                 <option value="gear">Gear</option>
@@ -63,16 +58,18 @@ const EditInventoryItem = () => {
                   <input
                     className="item-availability-status__radio"
                     type="radio"
-                    name="radio"
-                  ></input>
+                    name="status"
+                    value="in stock"
+                  />
                   In stock
                 </label>
                 <label className="item-availability-status__radio-label">
                   <input
                     className="item-availability-status__radio"
                     type="radio"
-                    name="radio"
-                  ></input>
+                    name="status"
+                    value="out of stock"
+                  />
                   Out of stock
                 </label>
               </div>
@@ -81,7 +78,6 @@ const EditInventoryItem = () => {
                 <select
                   className="item-availability__warehouse"
                   name="warehouse"
-                  //   placeholder="Please select"
                 >
                   <option value="">Please select</option>
                   <option value="manhattan">Manhattan</option>
@@ -98,15 +94,15 @@ const EditInventoryItem = () => {
           </div>
         </div>
         <div className="edit-inventory__form-buttons">
-          <Link className="edit-inventory__form-cancel-button-link" to={"/"}>
+          <Link className="edit-inventory__form-cancel-button-link" to="/">
             <input
               className="edit-inventory__form-cancel-button"
-              type="submit"
+              type="button"
               name="cancel"
               value="Cancel"
             />
           </Link>
-          <Link className="edit-inventory__form-save-button-link" to={"/"}>
+          <Link className="edit-inventory__form-save-button-link" to="/">
             <input
               className="edit-inventory__form-save-button"
               type="submit"

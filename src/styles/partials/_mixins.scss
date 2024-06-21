@@ -3,9 +3,14 @@
   flex-direction: $flex-direction;
   justify-content: $justify-content;
   align-items: $align-items;
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
 }
 
 @mixin tablet {
+
 
   @media (min-width: 768px){ 
 
@@ -14,6 +19,9 @@
 }
 
 @mixin desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
   @media (min-width: 1280px) {
     @content;
   }
