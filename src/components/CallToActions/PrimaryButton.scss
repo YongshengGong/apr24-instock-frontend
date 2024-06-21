@@ -1,0 +1,26 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/topography" as *;
+@use "../../styles/partials/variables" as *;
+
+.add-button {
+  width: 100%;
+  background-color: $instockIndigo-interactiveElements;
+  border-radius: 20px;
+  border: none;
+  height: 36px;
+  margin-top: 1rem;
+  color: $white-globalWhite;
+  font-family: "titillium";
+
+  @include tablet {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: 0;
+  }
+
+  &:hover {
+    background-color: $graphite-navHeaderBG;
+  }
+}
