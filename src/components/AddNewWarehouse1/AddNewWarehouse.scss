@@ -1,0 +1,248 @@
+@use "../../styles/partials/resets" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/topography" as *;
+@use "../../styles/partials/variables" as *;
+
+.add-warehouse {
+  width: calc(100vw - 3rem);
+  border-radius: 4px;
+  background-color: $white-globalWhite;
+  display: flex;
+  flex-direction: column;
+  color: $instockBlack-globalText;
+  margin: 0 auto;
+  margin-top: -4.5rem;
+  border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+
+  @include tablet {
+    width: calc(100vw - 3rem);
+    margin: 0 auto;
+    margin-top: -6.25rem;
+  }
+
+  @include desktop {
+    width: calc(100vw - 12rem);
+    margin: 0 auto;
+    margin-top: -6.25rem;
+  }
+
+  &__back-button-link {
+    margin-right: 1rem;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding: 2rem;
+    border-bottom: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  }
+
+  &__title-text {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h1PageHeader_textSize;
+    line-height: $mobile-h1PageHeader_lineHeight;
+  }
+}
+
+.add-warehouse__form {
+  display: flex;
+  flex-direction: column;
+
+  &-info {
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      padding: 1rem;
+    }
+  }
+}
+
+.warehouse-details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+
+  @include tablet {
+    width: 50%;
+    border-bottom: 0;
+    border-right: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  }
+
+  &__title {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h2SubHeader_textSize;
+    line-height: $mobile-h2SubHeader_lineHeight;
+    margin-bottom: 1rem;
+  }
+
+  &__name-label {
+    @include label
+  }
+
+  &__name {
+    @include label-input;
+  }
+
+  &__address-label {
+    @include label
+  }
+
+  &__address {
+    @include label-input;
+
+    &--error {
+      border: 1px solid #D22D2D;
+    }
+  }
+
+  &__city-label {
+    @include label
+  }
+
+  &__city {
+    @include label-input;
+
+    &--error {
+      border: 1px solid #D22D2D;
+    }
+  }
+
+  &__country-label {
+    @include label
+  }
+
+  &__country {
+    @include label-input;
+
+    &--error {
+      border: 1px solid #D22D2D;
+    }
+  }
+}
+
+.contact-details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+
+  @include tablet {
+    width: 50%;
+    border-bottom: 0;
+    border-right: 0;
+  }
+
+  &__title {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h2SubHeader_textSize;
+    line-height: $mobile-h2SubHeader_lineHeight;
+    margin-bottom: 1rem;
+  }
+
+  &__name-label {
+    @include label
+  }
+
+  &__name {
+    @include label-input;
+
+    &--error {
+      border: 1px solid #D22D2D;
+    }
+  }
+
+  &__contact_position-label {
+    @include label
+  }
+
+  &__contact_position {
+    @include label-input;
+
+    &--error {
+      border: 1px solid #D22D2D;
+    }
+  }
+
+  &__phone-label {
+    @include label
+  }
+
+  &__phone {
+    @include label-input;
+
+    &--error {
+      border: 1px solid #D22D2D;
+    }
+  }
+
+  &__email-label {
+    @include label
+  }
+
+  &__email {
+    @include label-input;
+
+    &--error {
+      border: 1px solid #D22D2D;
+    }
+  }
+}
+
+.add-warehouse__form-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $lightGrey-pageBG-tableColumnHeadersBG-ctaBG;
+  padding: 1rem;
+
+  @include tablet {
+    justify-content: flex-end;
+  }
+}
+
+.add-warehouse__form-cancel-button-link {
+  text-decoration: none;
+  width: 100%;
+
+  @include tablet {
+    width: auto;
+  }
+}
+
+.add-warehouse__form-cancel-button {
+  background-color: $white-globalWhite;
+  color: $cloud-outlines-dividers-borders-tableSortingIcon;
+  border-radius: 20px;
+  width: 100%;
+  height: 2.25rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+}
+
+.add-warehouse__form-save-button {
+  text-decoration: none;
+  width: 100%;
+  margin: 1rem;
+  background-color: $instockIndigo-interactiveElements;
+  color: $white-globalWhite;
+  border-radius: 20px;
+  height: 2.25rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+
+  @include tablet {
+    width: 20%;
+  }
+}
