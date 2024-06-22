@@ -10,14 +10,14 @@ function InventoryItemDetails() {
     <section className="item-details">
       <header className="item-details__header">
         <div className="item-details__arrow-title-container">
-          <Link to={"/"} className="item-details__back-arrow-link">
+          <Link to={"/inventory"} className="item-details__back-arrow-link">
             <img src={backArrow} className="item-details__back-arrow" />
           </Link>
           {/* Replace below with data point based on id clicked */}
           <h1 className="item-details__title">Television</h1>
         </div>
         {/* Need to update below link once warehouse edit page is created. */}
-        <Link to={"/"} className="item-details__edit-button-link">
+        <Link to={"/editInventoryItem"} className="item-details__edit-button-link">
           <EditButton />
         </Link>
       </header>

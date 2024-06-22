@@ -1,19 +1,18 @@
+import "./InventoryPage.scss";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import "./WarehousePage.scss";
-import WarehouseList from "../../components/TablesWarehouses/TablesWarehouses";
-import { useEffect, useState } from "react";
+import { useState,useEffect } from "react";
+import InventoryFullList from "../../components/InventoryFullList/InventoryFullList";
 import axios from "axios";
-
-function WarehousePage({ button }) {
-  const [warehouses, setWarehouses] = useState([]);
+function InventoryPage({ button }) {
+  const [inventory, setInventory] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/warehouses");
-        setWarehouses(response.data);
+        const response = await axios.get("http://localhost:8080/inventory");
+        setInventory(response.data);
       } catch (error) {
         console.log(`Looks like there is an error fetching: ${error}`);
       }
@@ -25,21 +24,17 @@ function WarehousePage({ button }) {
     setSearchQuery(event.target.value);
   };
 
-  const filteredWarehouses = warehouses.filter((warehouse) =>
+  const filteredInventory = inventory.filter((warehouse) =>
     warehouse.warehouse_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
   return (
     <>
       <Header button={button} />
-      <WarehouseList
-        warehouses={filteredWarehouses}
+      <InventoryFullList inventory={filteredInventory}
         searchQuery={searchQuery}
-        handleSearch={handleSearch}
-      />
+        handleSearch={handleSearch} />
       <Footer />
     </>
   );
 }
-
-export default WarehousePage;
+export default InventoryPage;
