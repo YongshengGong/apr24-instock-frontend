@@ -8,7 +8,7 @@ const AddInventoryItem = () => {
   return (
     <main className="add-inventory">
       <div className="add-inventory__title">
-        <Link className="add-inventory__back-button-link" to={"/"}>
+        <Link className="add-inventory__back-button-link" to={"/inventory"}>
           <img
             className="add-inventory__back-button"
             src={backArrowLogo}
@@ -105,7 +105,7 @@ const AddInventoryItem = () => {
           </div>
         </div>
         <div className="add-inventory__form-buttons">
-          <Link className="add-inventory__form-cancel-button-link" to={"/"}>
+          <Link className="add-inventory__form-cancel-button-link" to={"/inventory"}>
             <input
               className="add-inventory__form-cancel-button"
               type="submit"
@@ -113,7 +113,7 @@ const AddInventoryItem = () => {
               value="Cancel"
             />
           </Link>
-          <Link className="add-inventory__form-save-button-link" to={"/"}>
+          <Link className="add-inventory__form-save-button-link" to={"/inventory"}>
             <input
               className="add-inventory__form-save-button"
               type="submit"

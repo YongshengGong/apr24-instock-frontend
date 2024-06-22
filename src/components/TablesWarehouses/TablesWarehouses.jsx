@@ -53,7 +53,7 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
         {warehouses.map((warehouse) => (
           <li className="warehouses__item" key={warehouse.id}>
             <div className="warehouses__info-group">
-              <div className="warehouses__info-item">
+              <div className="warehouses__info-item warehouses__info-item--warehouse">
                 <p className="warehouses__sub-title">WAREHOUSE</p>
                 <div className="link-arrow">
                   <Link
@@ -65,19 +65,19 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
                   <img src={chevron} alt="Enter Arrow" />
                 </div>
               </div>
-              <div className="warehouses__info-item">
+              <div className="warehouses__info-item warehouses__info-item--address">
                 <p className="warehouses__sub-title">ADDRESS</p>
                 <p className="warehouses__info warehouses__info--address">
                   {warehouse.address}
                 </p>
               </div>
-              <div className="warehouses__info-item">
+              <div className="warehouses__info-item warehouses__info-item--name">
                 <p className="warehouses__sub-title">CONTACT NAME</p>
                 <p className="warehouses__info warehouses__info--name">
                   {warehouse.contact_name}
                 </p>
               </div>
-              <div className="warehouses__info-item">
+              <div className="warehouses__info-item warehouses__info-item--contact">
                 <p className="warehouses__sub-title">CONTACT INFORMATION</p>
                 <p className="warehouses__info">{warehouse.contact_phone}</p>
                 <p className="warehouses__info">{warehouse.contact_email}</p>
