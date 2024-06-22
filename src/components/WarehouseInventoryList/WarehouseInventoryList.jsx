@@ -3,10 +3,14 @@ import chevron from "../../assets/images/icons/nav/chevron_right-24px.svg";
 import trashcan from "../../assets/images/icons/action/delete_outline-24px.svg";
 import editicon from "../../assets/images/icons/action/edit-24px.svg";
 import filtericon from "../../assets/images/icons/nav/sort-default.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-const WarehouseInventoryList = () => {
+import axios from "axios";
+const WarehouseInventoryList = ({warehouseId}) => {
+  useEffect(async()=>{
+   const res= await axios.get(`http://localhost:8080/api/warehouses/:${warehouseId}/inventories`);
+   console.log(res);
+  },[])
   return (
     <section className="wh-inv">
       <ul className="table-headers__list">
