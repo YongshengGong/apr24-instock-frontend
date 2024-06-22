@@ -4,10 +4,10 @@ import "./InventoryItemDetailsPage.scss";
 
 import InventoryItemDetails from "../../components/InventoryItemDetails/InventoryItemDetails";
 
-function InventoryItemDetailsPage() {
+function InventoryItemDetailsPage({button}) {
   return (
     <>
-      <Header />
+      <Header button={button}/>
       <main className="main">
         <InventoryItemDetails />
       </main>

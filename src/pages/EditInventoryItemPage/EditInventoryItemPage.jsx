@@ -2,13 +2,11 @@ import "../EditInventoryItemPage/EditInventoryItemPage.scss";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
-function EditInventoryItemPage() {
+function EditInventoryItemPage({button}) {
   return (
     <>
-      <Header />
-      <main>
+      <Header button={button}/>
         <EditInventoryItem />
-      </main>
       <Footer />
     </>
   );

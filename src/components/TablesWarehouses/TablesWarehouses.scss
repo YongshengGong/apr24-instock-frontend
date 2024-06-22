@@ -135,20 +135,50 @@
       margin-left: 1rem;
     }
 
+    &--warehouse {
+      order: 0;
+  }
+
+  &--address {
+      order: 2;
+      margin-top:2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      @include tablet {
+          order: 1;
+          margin-top:0;
+      }
+  }
+
+  &--name {
+      order: 1;
+
+      @include tablet {
+          order: 2;
+      }
+  }
+
+  &--contact {
+      order: 3;
+      margin-top:2rem;
+      @include tablet{
+          margin-top:0;
+      }
+  }
+
     &--actions {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding-left: 1rem;
       padding-right: 1rem;
       max-width: 100%;
       margin-top: 1rem;
+      order: 4;
 
       @include tablet {
         justify-content: space-evenly;
-      }
-
-      @include desktop {
+        padding-left: 1rem;
       }
     }
   }
