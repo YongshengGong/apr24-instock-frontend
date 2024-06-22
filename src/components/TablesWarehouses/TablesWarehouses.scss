@@ -7,20 +7,20 @@
   width: calc(100vw - 3rem);
   border-radius: 4px;
   font-family: "titillium";
-  margin:0 auto;
-  margin-top:-4.5rem;
-  border:1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  margin: 0 auto;
+  margin-top: -4.5rem;
   background-color: $white-globalWhite;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.32);
   @include tablet {
     width: calc(100vw - 3rem);
-    margin:0 auto;
-    margin-top:-6.25rem;
+    margin: 0 auto;
+    margin-top: -6.25rem;
   }
 
   @include desktop {
     width: calc(100vw - 12rem);
-    margin:0 auto;
-    margin-top:-6.25rem;
+    margin: 0 auto;
+    margin-top: -6.25rem;
   }
 
   &__header {
@@ -103,13 +103,13 @@
     margin-top: 2rem;
     flex-direction: column;
     border-top: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
-   
 
     @include tablet {
       display: block;
       padding: 2rem 1rem;
       margin-top: 0;
       border-top: none;
+      border-bottom: 2px solid $cloud-outlines-dividers-borders-tableSortingIcon;
     }
   }
   &__info-group {
@@ -135,20 +135,50 @@
       margin-left: 1rem;
     }
 
+    &--warehouse {
+      order: 0;
+  }
+
+  &--address {
+      order: 2;
+      margin-top:2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      @include tablet {
+          order: 1;
+          margin-top:0;
+      }
+  }
+
+  &--name {
+      order: 1;
+
+      @include tablet {
+          order: 2;
+      }
+  }
+
+  &--contact {
+      order: 3;
+      margin-top:2rem;
+      @include tablet{
+          margin-top:0;
+      }
+  }
+
     &--actions {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding-left: 1rem;
       padding-right: 1rem;
       max-width: 100%;
       margin-top: 1rem;
+      order: 4;
 
       @include tablet {
         justify-content: space-evenly;
-      }
-
-      @include desktop {
+        padding-left: 1rem;
       }
     }
   }

@@ -1,3 +1,7 @@
+@use "./variables" as*;
+@use "./colors" as*;
+@use "./topography" as*;
+
 @mixin flex($flex-direction, $justify-content, $align-items) {
   display: flex;
   flex-direction: $flex-direction;
@@ -10,9 +14,6 @@
 }
 
 @mixin tablet {
-  @media (min-width: 768px) and (max-width: 1279px) {
-    @content;
-  }
   @media (min-width: 768px) {
     @content;
   }
@@ -22,7 +23,44 @@
   @media (min-width: 1280px) {
     @content;
   }
-  @media (min-width: 1280px) {
-    @content;
+}
+
+@mixin label {
+  font-family: titillium;
+  font-weight: 600;
+  font-size: $mobile-h3LabelsLinksButtons_textSize;
+  line-height: $mobile-h3LabelsLinksButtons_lineHeight;
+  margin-bottom: 0.5rem;
+}
+
+@mixin label-input {
+  font-family: titillium;
+  font-weight: 400;
+  font-size: $tabletDesktop-p3BodySmall_textSize;
+  line-height: $tabletDesktop-p3BodySmall_lineHeight;
+  width: 100%;
+  border-radius: 20px;
+  padding: 0.25rem 1rem;
+  border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  appearance: none;
+  margin-top: 0.25rem;
+  color: $cloud-outlines-dividers-borders-tableSortingIcon;
+  height: 2.25rem;
+
+  @include tablet {
+    height: 2.375rem;
+  }
+
+  &::placeholder {
+    color: $slate-tableColumnHeaders-placeholderText;
+  }
+
+  &:focus {
+    border: 1px solid $instockIndigo-interactiveElements;
+    outline: none;
+    color: $instockBlack-globalText;
+  }
+  &--error {
+    border: 1px solid #D22D2D;
   }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Deletewarehousepage.scss";
 
-const Deletewarehouse = ({ onClose }) => {
+const Deletewarehousepage = ({ onClose }) => {
   const handleDelete = () => {
     console.log("Warehouse deleted");
     onClose();
@@ -28,4 +28,4 @@ const Deletewarehouse = ({ onClose }) => {
   );
 };
 
-export default Deletewarehouse;
+export default Deletewarehousepage;

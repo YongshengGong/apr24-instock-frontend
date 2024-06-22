@@ -6,12 +6,12 @@
 .main {
   width: calc(100vw - 3rem);
   margin: 0 auto;
-  margin-top: -6.25rem;
+  margin-top: -4.5rem;
   background-color: $white-globalWhite;
 
   @include tablet {
     margin: 0 auto;
-    margin-top: -4.5rem;
+    margin-top: -6.25rem;
     border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
     border-radius: 4px;
   }

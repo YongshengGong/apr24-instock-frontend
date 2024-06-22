@@ -5,9 +5,9 @@ import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
 const EditInventoryItem = () => {
   return (
-    <main className="edit-inventory">
+    <section className="edit-inventory">
       <div className="edit-inventory__title">
-        <Link className="edit-inventory__back-button-link" to="/">
+        <Link className="edit-inventory__back-button-link" to="/inventoryDetails">
           <img
             className="edit-inventory__back-button"
             src={backArrowLogo}
@@ -94,7 +94,7 @@ const EditInventoryItem = () => {
           </div>
         </div>
         <div className="edit-inventory__form-buttons">
-          <Link className="edit-inventory__form-cancel-button-link" to="/">
+          <Link className="edit-inventory__form-cancel-button-link" to="/inventoryDetails">
             <input
               className="edit-inventory__form-cancel-button"
               type="button"
@@ -102,7 +102,7 @@ const EditInventoryItem = () => {
               value="Cancel"
             />
           </Link>
-          <Link className="edit-inventory__form-save-button-link" to="/">
+          <Link className="edit-inventory__form-save-button-link" to="/inventoryDetails">
             <input
               className="edit-inventory__form-save-button"
               type="submit"
@@ -112,7 +112,7 @@ const EditInventoryItem = () => {
           </Link>
         </div>
       </form>
-    </main>
+    </section>
   );
 };
 
