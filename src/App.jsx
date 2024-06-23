@@ -109,8 +109,7 @@ function App() {
             <EditWarehousePage
               button="warehousesButton"
               warehouses={warehouses}
-              passId={passId}
-              // ID={ID}
+              ID={ID}
             />
           }
         ></Route>
