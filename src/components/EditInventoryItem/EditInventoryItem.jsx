@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
 const EditInventoryItem = (selectedItem) => {
-  // console.log(selectedItem);
+  // console.log(selectedItem.selectedItem);
   return (
     <section className="edit-inventory">
       <div className="edit-inventory__title">
@@ -26,7 +26,8 @@ const EditInventoryItem = (selectedItem) => {
                 className="item-details__name"
                 type="text"
                 name="itemName"
-                placeholder="Item Name"
+                // placeholder="Item Name"
+                defaultValue={selectedItem.selectedItem.item_name}
               />
             </label>
             <label className="item-details__description-label">
@@ -35,12 +36,14 @@ const EditInventoryItem = (selectedItem) => {
                 className="item-details__description"
                 name="description"
                 placeholder="Description"
+                defaultValue={selectedItem.selectedItem.description}
               ></textarea>
             </label>
             <label className="item-details__category-label">
               Category
               <select className="item-details__category" name="category">
-                <option value="">Please select</option>
+                {/* <option value="">Please select</option> */}
+                <option value="">{selectedItem.selectedItem.category}</option>
                 <option value="electronics">Electronics</option>
                 <option value="gear">Gear</option>
                 <option value="apparel">Apparel</option>
@@ -60,6 +63,7 @@ const EditInventoryItem = (selectedItem) => {
                     type="radio"
                     name="status"
                     value="in stock"
+                    defaultChecked={selectedItem.selectedItem.status}
                   />
                   In stock
                 </label>
@@ -79,7 +83,10 @@ const EditInventoryItem = (selectedItem) => {
                   className="item-availability__warehouse"
                   name="warehouse"
                 >
-                  <option value="">Please select</option>
+                  {/* <option value="">Please select</option> */}
+                  <option value="">
+                    {selectedItem.selectedItem.warehouse_name}
+                  </option>
                   <option value="manhattan">Manhattan</option>
                   <option value="washington">Washington</option>
                   <option value="jersey">Jersey</option>
