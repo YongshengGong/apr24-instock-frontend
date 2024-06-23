@@ -1,11 +1,12 @@
 import "./WarehouseDetails.scss";
 import backArrow from "../../assets/images/icons/nav/arrow_back-24px.svg";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import EditButton from "../CallToActions/EditButtonWhite";
 
-function WarehouseDetails() {
+function WarehouseDetails({ selectedWarehouse }) {
+  if (selectedWarehouse === undefined) {
+    return (<>loading...</>)
+  }
   return (
     <section>
       <header className="wh-details__header">
@@ -13,10 +14,8 @@ function WarehouseDetails() {
           <Link to={"/"} className="wh-details__back-arrow-link">
             <img src={backArrow} className="wh-details__back-arrow" />
           </Link>
-          {/* Replace below with data point based on id clicked */}
-          <h1 className="wh-details__title">Washington</h1>
+          <h1 className="wh-details__title">{selectedWarehouse.warehouse_name}</h1>
         </div>
-        {/* Need to update below link once warehouse edit page is created. */}
         <Link to={"/editWarehouse"} className="wh-details__edit-button-link">
           <EditButton />
         </Link>
@@ -25,21 +24,20 @@ function WarehouseDetails() {
       <section className="info-section">
         <div className="wh-details__info-container">
           <h4 className="wh-details__sub-title">WAREHOUSE ADDRESS:</h4>
-          {/* ! Replace with Data */}
           <p className="wh-details__info">
-            33 Pearl Street SW, Washington, USA
+            {selectedWarehouse.address}
           </p>
         </div>
         <div className="wh-details__contact-container">
           <div className="wh-details__info-container wh-details__info-container--contact">
             <h4 className="wh-details__sub-title">CONTACT NAME:</h4>
-            <p className="wh-details__info">Graeme Lyon</p>
-            <p className="wh-details__info">Warehouse Manager</p>
+            <p className="wh-details__info">{selectedWarehouse.contact_name}</p>
+            <p className="wh-details__info">{selectedWarehouse.contact_position}</p>
           </div>
           <div className="wh-details__info-container wh-details__info-container--contact-info">
             <h4 className="wh-details__sub-title">CONTACT INFOMATION</h4>
-            <p className="wh-details__info">+1 647-504-0911</p>
-            <p className="wh-details__info">glyon@instock.com</p>
+            <p className="wh-details__info">{selectedWarehouse.contact_phone}</p>
+            <p className="wh-details__info">{selectedWarehouse.contact_email}</p>
           </div>
         </div>
       </section>

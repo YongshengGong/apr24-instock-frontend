@@ -3,7 +3,7 @@ import trashcan from "../../assets/images/icons/action/delete_outline-24px.svg";
 import editicon from "../../assets/images/icons/action/edit-24px.svg";
 import filtericon from "../../assets/images/icons/nav/sort-default.svg";
 import {PrimaryButtonInventory} from "../CallToActions/PrimaryButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./InventoryFullList.scss"
 
 

@@ -87,7 +87,6 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding-left: 1rem;
       padding-right: 1rem;
       max-width: 100%;
       margin-top: 1rem;
@@ -95,6 +94,7 @@
       @include tablet {
         justify-content: space-evenly;
         margin-top: 0;
+        padding-left: 1rem;
       }
 
       @include desktop {
@@ -199,4 +199,26 @@
   }
 }
 
-// Needed to flip the order of the category field and status
+.wh-inv__info--status{
+    &--instock{
+        display: flex;
+        width:90px;
+        height:2rem;
+        color:#158463;
+        background-color:rgba(#158463, 0.07);
+        border-radius: 20px;
+        justify-content: center;
+        align-items: center;
+      }
+      &--outofstock{
+        display: flex;
+        width:130px;
+        color:#C94515;
+        height:2rem;
+        background-color:rgba(#C94515, 0.07);
+        border-radius: 20px;
+        justify-content: center;
+        align-items: center;
+      }
+}
+

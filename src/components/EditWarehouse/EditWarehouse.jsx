@@ -1,14 +1,13 @@
 import "./EditWarehouse.scss";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
-const EditWarehouse = () => {
+const EditWarehouse = ({ ID }) => {
+
   return (
     <main className="add-inventory">
       <div className="add-inventory__title">
-        <Link className="add-inventory__back-button-link" to={"/details"}>
+        <Link className="add-inventory__back-button-link" to={`/warehouses/${ID}`}>
           <img
             className="add-inventory__back-button"
             src={backArrowLogo}
@@ -27,7 +26,7 @@ const EditWarehouse = () => {
                 className="warehouse-details__name"
                 type="text"
                 name="warehouseName"
-                // placeholder="Warehouse Name"
+              // placeholder="Warehouse Name"
               ></input>
             </label>
             <label className="warehouse-details__address-label">
@@ -36,7 +35,7 @@ const EditWarehouse = () => {
                 className="warehouse-details__address"
                 name="address"
                 type="text"
-                // placeholder="Street Address"
+              // placeholder="Street Address"
               ></input>
             </label>
             <label className="warehouse-details__city-label">
@@ -45,7 +44,7 @@ const EditWarehouse = () => {
                 className="warehouse-details__city"
                 name="city"
                 type="text"
-                // placeholder="City"
+              // placeholder="City"
               ></input>
             </label>
             <label className="warehouse-details__country-label">
@@ -54,7 +53,7 @@ const EditWarehouse = () => {
                 className="warehouse-details__country"
                 name="country"
                 type="text"
-                // placeholder="Country"
+              // placeholder="Country"
               ></input>
             </label>
           </div>
@@ -66,7 +65,7 @@ const EditWarehouse = () => {
                 className="contact-details__name"
                 type="text"
                 name="contactName"
-                // placeholder="Contact Name"
+              // placeholder="Contact Name"
               ></input>
             </label>
             <label className="contact-details__position-label">
@@ -75,7 +74,7 @@ const EditWarehouse = () => {
                 className="contact-details__position"
                 name="position"
                 type="text"
-                // placeholder="Position"
+              // placeholder="Position"
               ></input>
             </label>
             <label className="contact-details__phone-label">
@@ -84,7 +83,7 @@ const EditWarehouse = () => {
                 className="contact-details__phone"
                 name="phone"
                 type="text"
-                // placeholder="Phone Number"
+              // placeholder="Phone Number"
               ></input>
             </label>
             <label className="contact-details__email-label">
@@ -93,13 +92,13 @@ const EditWarehouse = () => {
                 className="contact-details__email"
                 name="email"
                 type="text"
-                // placeholder="Email"
+              // placeholder="Email"
               ></input>
             </label>
           </div>
         </div>
         <div className="add-inventory__form-buttons">
-          <Link className="add-inventory__form-cancel-button-link" to={"/details"}>
+          <Link className="add-inventory__form-cancel-button-link" to={`/warehouses/${ID}`}>
             <input
               className="add-inventory__form-cancel-button"
               type="button"
@@ -107,7 +106,7 @@ const EditWarehouse = () => {
               value="Cancel"
             />
           </Link>
-          <Link className="add-inventory__form-save-button-link" to={"/details"}>
+          <Link className="add-inventory__form-save-button-link" to={`/warehouses/${ID}`}>
             <input
               className="add-inventory__form-save-button"
               type="submit"
