@@ -28,7 +28,7 @@ function App() {
           element={<InventoryItemDetailsPage button="inventoryButton" />}
         ></Route>
         <Route
-          path="/editInventoryItem"
+          path="/editInventoryItem/:inventoryId"
           element={<EditInventoryItemPage button="inventoryButton" />}
         ></Route>
         <Route

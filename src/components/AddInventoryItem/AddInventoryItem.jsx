@@ -3,8 +3,14 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
+import QuantityField from "../QuantityField/QuantityField";
 
 const AddInventoryItem = () => {
+  const [isInStock, setInStock] = useState(false);
+
+  function toggle() {
+    setInStock((isInStock) => !isInStock);
+  }
   return (
     <main className="add-inventory">
       <div className="add-inventory__title">
@@ -59,7 +65,9 @@ const AddInventoryItem = () => {
                   <input
                     className="item-availability-status__radio"
                     type="radio"
-                    name="radio"
+                    name="status"
+                    value="in stock"
+                    onChange={toggle}
                   ></input>
                   In stock
                 </label>
@@ -67,23 +75,14 @@ const AddInventoryItem = () => {
                   <input
                     className="item-availability-status__radio"
                     type="radio"
-                    name="radio"
+                    name="status"
+                    value="out of stock"
+                    onChange={toggle}
                   ></input>
                   Out of stock
                 </label>
               </div>
-              <div className="item-availability__quantity-info">
-                <label className="item-availability__quantity-label">
-                  <span className="item-availability__quantity-span">
-                    Quantity
-                  </span>
-                  <input
-                    className="item-availability__quantity"
-                    type="tel"
-                    name="quantity"
-                  ></input>
-                </label>
-              </div>
+              {isInStock && <QuantityField />}
               <label className="item-availability__warehouse-label">
                 Warehouse
                 <select
@@ -105,7 +104,10 @@ const AddInventoryItem = () => {
           </div>
         </div>
         <div className="add-inventory__form-buttons">
-          <Link className="add-inventory__form-cancel-button-link" to={"/inventory"}>
+          <Link
+            className="add-inventory__form-cancel-button-link"
+            to={"/inventory"}
+          >
             <input
               className="add-inventory__form-cancel-button"
               type="submit"
@@ -113,7 +115,10 @@ const AddInventoryItem = () => {
               value="Cancel"
             />
           </Link>
-          <Link className="add-inventory__form-save-button-link" to={"/inventory"}>
+          <Link
+            className="add-inventory__form-save-button-link"
+            to={"/inventory"}
+          >
             <input
               className="add-inventory__form-save-button"
               type="submit"
