@@ -11,7 +11,6 @@ import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryIt
 import AddInventoryItemPage from "./pages/AddInventoryItemPage/AddInventoryItemPage.jsx";
 import axios from "axios";
 function App() {
-  // const port = import.meta.env.VITE_PORT || "http://localhost:8080";
   const [warehouses, setWarehouses] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [ID, setID] = useState(null);

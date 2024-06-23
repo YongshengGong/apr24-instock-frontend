@@ -4,7 +4,6 @@ import trashcan from "../../assets/images/icons/action/delete_outline-24px.svg";
 import editicon from "../../assets/images/icons/action/edit-24px.svg";
 import filtericon from "../../assets/images/icons/nav/sort-default.svg";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 const WarehouseInventoryList = ({ warehouseId }) => {
   const [inventory, setInventory] = useState([]);
@@ -41,7 +40,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
       </ul>
 
       {inventory.map(inv => {
-        return (<ul className="wh-inv__list">
+        return (<ul className="wh-inv__list" key={inv.id}>
           <li className="wh-inv__item">
             <div className="wh-inv__info-group">
               <div className="wh-inv__info-item" id="inv-name">
@@ -60,7 +59,11 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                 <p className="wh-inv__sub-title" id="status">
                   STATUS
                 </p>
-                <p className="wh-inv__info wh-inv__info--status">{inv.status}</p>
+                <p className={inv.status === "In Stock" ?
+                  ("wh-inv__info wh-inv__info--status wh-inv__info--status--instock") :
+                  ("wh-inv__info wh-inv__info--status wh-inv__info--status--outofstock")
+                }
+                >{inv.status.toUpperCase()}</p>
               </div>
               <div className="wh-inv__info-item" id="category">
                 <p className="wh-inv__sub-title">CATEGORY</p>
