@@ -2,12 +2,11 @@ import "./EditWarehouse.scss";
 import { Link } from "react-router-dom";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
-const EditWarehouse = ({ ID }) => {
-
+const EditWarehouse = ({ ID, warehouses }) => {
   return (
     <main className="add-inventory">
       <div className="add-inventory__title">
-        <Link className="add-inventory__back-button-link" to={`/warehouses/${ID}`}>
+        <Link className="add-inventory__back-button-link" to={`/`}>
           <img
             className="add-inventory__back-button"
             src={backArrowLogo}
@@ -26,7 +25,8 @@ const EditWarehouse = ({ ID }) => {
                 className="warehouse-details__name"
                 type="text"
                 name="warehouseName"
-              // placeholder="Warehouse Name"
+                // placeholder="Warehouse Name"
+                defaultValue={selectedWarehouses.warehouse_name}
               ></input>
             </label>
             <label className="warehouse-details__address-label">
@@ -35,7 +35,8 @@ const EditWarehouse = ({ ID }) => {
                 className="warehouse-details__address"
                 name="address"
                 type="text"
-              // placeholder="Street Address"
+                // placeholder="Street Address"
+                defaultValue={selectedWarehouses.address}
               ></input>
             </label>
             <label className="warehouse-details__city-label">
@@ -44,7 +45,8 @@ const EditWarehouse = ({ ID }) => {
                 className="warehouse-details__city"
                 name="city"
                 type="text"
-              // placeholder="City"
+                // placeholder="City"
+                defaultValue={selectedWarehouses.city}
               ></input>
             </label>
             <label className="warehouse-details__country-label">
@@ -53,7 +55,8 @@ const EditWarehouse = ({ ID }) => {
                 className="warehouse-details__country"
                 name="country"
                 type="text"
-              // placeholder="Country"
+                // placeholder="Country"
+                defaultValue={selectedWarehouses.country}
               ></input>
             </label>
           </div>
@@ -65,7 +68,8 @@ const EditWarehouse = ({ ID }) => {
                 className="contact-details__name"
                 type="text"
                 name="contactName"
-              // placeholder="Contact Name"
+                // placeholder="Contact Name"
+                defaultValue={selectedWarehouses.contact_name}
               ></input>
             </label>
             <label className="contact-details__position-label">
@@ -74,7 +78,8 @@ const EditWarehouse = ({ ID }) => {
                 className="contact-details__position"
                 name="position"
                 type="text"
-              // placeholder="Position"
+                // placeholder="Position"
+                defaultValue={selectedWarehouses.contact_position}
               ></input>
             </label>
             <label className="contact-details__phone-label">
@@ -83,7 +88,8 @@ const EditWarehouse = ({ ID }) => {
                 className="contact-details__phone"
                 name="phone"
                 type="text"
-              // placeholder="Phone Number"
+                // placeholder="Phone Number"
+                defaultValue={selectedWarehouses.contact_phone}
               ></input>
             </label>
             <label className="contact-details__email-label">
@@ -92,13 +98,17 @@ const EditWarehouse = ({ ID }) => {
                 className="contact-details__email"
                 name="email"
                 type="text"
-              // placeholder="Email"
+                // placeholder="Email"
+                defaultValue={selectedWarehouses.contact_email}
               ></input>
             </label>
           </div>
         </div>
         <div className="add-inventory__form-buttons">
-          <Link className="add-inventory__form-cancel-button-link" to={`/warehouses/${ID}`}>
+          <Link
+            className="add-inventory__form-cancel-button-link"
+            to={`/warehouses/${selectedWarehouses.id}`}
+          >
             <input
               className="add-inventory__form-cancel-button"
               type="button"
@@ -106,7 +116,10 @@ const EditWarehouse = ({ ID }) => {
               value="Cancel"
             />
           </Link>
-          <Link className="add-inventory__form-save-button-link" to={`/warehouses/${ID}`}>
+          <Link
+            className="add-inventory__form-save-button-link"
+            to={`/warehouses/${selectedWarehouses.id}`}
+          >
             <input
               className="add-inventory__form-save-button"
               type="submit"

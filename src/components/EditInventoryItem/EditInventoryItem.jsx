@@ -2,11 +2,12 @@ import "../EditInventoryItem/EditInventoryItem.scss";
 import { Link, useNavigate } from "react-router-dom";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
-const EditInventoryItem = () => {
+const EditInventoryItem = (selectedItem) => {
+  // console.log(selectedItem.selectedItem);
   return (
     <section className="edit-inventory">
       <div className="edit-inventory__title">
-        <Link className="edit-inventory__back-button-link" to="/inventoryDetails">
+        <Link className="edit-inventory__back-button-link" to="/inventory">
           <img
             className="edit-inventory__back-button"
             src={backArrowLogo}
@@ -25,7 +26,8 @@ const EditInventoryItem = () => {
                 className="item-details__name"
                 type="text"
                 name="itemName"
-                placeholder="Item Name"
+                // placeholder="Item Name"
+                defaultValue={selectedItem.selectedItem.item_name}
               />
             </label>
             <label className="item-details__description-label">
@@ -34,12 +36,14 @@ const EditInventoryItem = () => {
                 className="item-details__description"
                 name="description"
                 placeholder="Description"
+                defaultValue={selectedItem.selectedItem.description}
               ></textarea>
             </label>
             <label className="item-details__category-label">
               Category
               <select className="item-details__category" name="category">
-                <option value="">Please select</option>
+                {/* <option value="">Please select</option> */}
+                <option value="">{selectedItem.selectedItem.category}</option>
                 <option value="electronics">Electronics</option>
                 <option value="gear">Gear</option>
                 <option value="apparel">Apparel</option>
@@ -59,6 +63,7 @@ const EditInventoryItem = () => {
                     type="radio"
                     name="status"
                     value="in stock"
+                    defaultChecked={selectedItem.selectedItem.status}
                   />
                   In stock
                 </label>
@@ -78,7 +83,10 @@ const EditInventoryItem = () => {
                   className="item-availability__warehouse"
                   name="warehouse"
                 >
-                  <option value="">Please select</option>
+                  {/* <option value="">Please select</option> */}
+                  <option value="">
+                    {selectedItem.selectedItem.warehouse_name}
+                  </option>
                   <option value="manhattan">Manhattan</option>
                   <option value="washington">Washington</option>
                   <option value="jersey">Jersey</option>
@@ -93,7 +101,10 @@ const EditInventoryItem = () => {
           </div>
         </div>
         <div className="edit-inventory__form-buttons">
-          <Link className="edit-inventory__form-cancel-button-link" to="/inventoryDetails">
+          <Link
+            className="edit-inventory__form-cancel-button-link"
+            to="/inventoryDetails"
+          >
             <input
               className="edit-inventory__form-cancel-button"
               type="button"
@@ -101,7 +112,10 @@ const EditInventoryItem = () => {
               value="Cancel"
             />
           </Link>
-          <Link className="edit-inventory__form-save-button-link" to="/inventoryDetails">
+          <Link
+            className="edit-inventory__form-save-button-link"
+            to="/inventoryDetails"
+          >
             <input
               className="edit-inventory__form-save-button"
               type="submit"
