@@ -7,10 +7,7 @@ const EditInventoryItem = (selectedItem) => {
   return (
     <section className="edit-inventory">
       <div className="edit-inventory__title">
-        <Link
-          className="edit-inventory__back-button-link"
-          to="/inventoryDetails"
-        >
+        <Link className="edit-inventory__back-button-link" to="/inventory">
           <img
             className="edit-inventory__back-button"
             src={backArrowLogo}

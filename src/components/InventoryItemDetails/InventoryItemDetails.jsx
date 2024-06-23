@@ -10,7 +10,7 @@ function InventoryItemDetails({ selectedInventory }) {
     <section className="item-details">
       <header className="item-details__header">
         <div className="item-details__arrow-title-container">
-          <Link to={"/inventory"} className="item-details__back-arrow-link">
+          <Link to={`/inventory`} className="item-details__back-arrow-link">
             <img src={backArrow} className="item-details__back-arrow" />
           </Link>
           {/* Replace below with data point based on id clicked */}
