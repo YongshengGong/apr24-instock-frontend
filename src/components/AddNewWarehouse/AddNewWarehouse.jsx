@@ -62,7 +62,7 @@ const AddNewWarehouse = () => {
       newErrors.contact_email = true;
     }
     setErrors(newErrors);
-    console.log(newErrors.contact_email);
+   
     if (!newErrors.warehouse_name &&
       !newErrors.address &&
       !newErrors.city &&

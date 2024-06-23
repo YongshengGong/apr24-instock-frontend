@@ -110,6 +110,9 @@
       border: 1px solid $instockIndigo-interactiveElements;
       outline: none;
     }
+    &--error {
+      border: 1px solid #D22D2D;
+    }
   }
 
   &__description-label {
@@ -140,6 +143,9 @@
     &:focus {
       border: 1px solid $instockIndigo-interactiveElements;
       outline: none;
+    }
+    &--error {
+      border: 1px solid #D22D2D;
     }
   }
   &__category-label {
@@ -175,6 +181,9 @@
       border: 1px solid $instockIndigo-interactiveElements;
       outline: none;
       color: $instockBlack-globalText;
+    }
+    &--error {
+      border: 1px solid #D22D2D;
     }
   }
 }
@@ -239,6 +248,9 @@
       border: 1px solid $instockIndigo-interactiveElements;
       outline: none;
     }
+    &--error {
+      border: 1px solid #D22D2D;
+    }
   }
   &__warehouse-label {
     font-family: titillium;
@@ -272,6 +284,10 @@
       outline: none;
       color: $instockBlack-globalText;
     }
+    &--error {
+      border: 1px solid #D22D2D;
+    }
+    
   }
 }
 
@@ -342,14 +358,6 @@
   border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
 }
 
-.add-inventory__form-save-button-link {
-  text-decoration: none;
-  width: 100%;
-  margin: 1rem;
-  @include tablet {
-    width: auto;
-  }
-}
 
 .add-inventory__form-save-button {
   background-color: $instockIndigo-interactiveElements;
@@ -362,4 +370,8 @@
   justify-content: center;
   align-items: center;
   border: none;
+  margin: 1rem;
+  @include tablet {
+    width: auto;
+  }
 }

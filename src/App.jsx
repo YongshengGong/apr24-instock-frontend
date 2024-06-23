@@ -62,7 +62,7 @@ function App() {
         ></Route>
         <Route
           path="/addInventory"
-          element={<AddInventoryItemPage button="inventoryButton" />}
+          element={<AddInventoryItemPage button="inventoryButton" warehouses={warehouses} />}
         ></Route>
       </Routes>
     </BrowserRouter>
