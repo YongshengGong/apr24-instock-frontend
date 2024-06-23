@@ -3,23 +3,8 @@ import Footer from "../../components/Footer/Footer";
 import "./WarehousePage.scss";
 import WarehouseList from "../../components/TablesWarehouses/TablesWarehouses";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
-function WarehousePage({ button }) {
-  const [warehouses, setWarehouses] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/warehouses");
-        setWarehouses(response.data);
-      } catch (error) {
-        console.log(`Looks like there is an error fetching: ${error}`);
-      }
-    };
-    fetchData();
-  }, []);
+function WarehousePage({ button, warehouses, searchQuery, setSearchQuery }) {
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
