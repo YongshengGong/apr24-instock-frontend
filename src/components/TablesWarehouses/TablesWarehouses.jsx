@@ -83,7 +83,7 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
               <div className="warehouses__info-item warehouses__info-item--actions">
                 {/* Need to Wrap these in Links! */}
                 <img src={trashcan} alt="Delete" className="warehouses__icon" />
-                <Link to={`/EditWarehouse/${warehouse.id}`}>
+                <Link to={`/editWarehouse/${warehouse.id}`}>
                   <img src={editicon} alt="Edit" className="warehouses__icon" />
                 </Link>
               </div>
