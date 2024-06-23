@@ -7,27 +7,31 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const EditInventoryItem = () => {
-  const [itemInfo, setItemInfo] = useState({});
-  const { inventoryId } = useParams();
-
-  useEffect(() => {
-    const fetchItemInfo = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8080/inventory/${inventoryId}`
-        );
-        setItemInfo(response.data);
-      } catch (e) {
-        console.error("error getting item data:", e);
-      }
-    };
-    fetchItemInfo();
-  }, []);
-
   const url = "http://localhost:8080";
   const nav = useNavigate();
-  const [itemName, setItemName] = useState("");
+  const [itemInfo, setItemInfo] = useState({});
+  const { inventoryId } = useParams();
+  const [item_name, setitem_name] = useState("");
   const [description, setDescription] = useState("");
+  const warehouses = [
+    { warehouse_name: "Please select", warehouse_id: "" },
+    { warehouse_name: "Manhattan", warehouse_id: 1 },
+    { warehouse_name: "Washington", warehouse_id: 2 },
+    { warehouse_name: "Jersey", warehouse_id: 3 },
+    { warehouse_name: "SF", warehouse_id: 4 },
+    { warehouse_name: "Santa Monica", warehouse_id: 5 },
+    { warehouse_name: "Seattle", warehouse_id: 6 },
+    { warehouse_name: "Miami", warehouse_id: 7 },
+    { warehouse_name: "Boston", warehouse_id: 8 },
+  ];
+  const [warehouse, setWarehouse] = useState({
+    warehouse_name: "",
+    warehouse_id: "",
+  });
+  // const [warehouse_id, setWarehouseId] = useState("");
+
+  const [status, setStatus] = useState(2);
+  const [quantity, setQuantity] = useState("");
   const categories = [
     "Please select",
     "Electronics",
@@ -37,83 +41,120 @@ const EditInventoryItem = () => {
     "Accessories",
   ];
   const [category, setCategory] = useState(categories[0]);
-  const [status, setStatus] = useState(2);
-  // const [quantity, setQuantity] = useState("");
-  // const [errors, setErrors] = useState({
-  //   item_name: false,
-  //   description: false,
-  //   category: false,
-  //   status: false,
-  //   quantity: false,
-  // });
+  const [errors, setErrors] = useState({
+    item_name: false,
+    description: false,
+    category: false,
+    status: false,
+    quantity: false,
+  });
   const [isInStock, setInStock] = useState(false);
+  const convertStatus = () => {
+    if (!status === "In Stock") {
+      setStatus("Out of Stock");
+      setInStock(false);
+    } else {
+      setStatus("In Stock");
+      setInStock(true);
+    }
+  };
+
+  useEffect(() => {
+    const fetchItemInfo = async () => {
+      try {
+        const response = await axios.get(`${url}/inventory/${inventoryId}`);
+        setItemInfo(response.data);
+        setitem_name(response.data.item_name);
+        setDescription(response.data.description);
+        let newWarehouse = {
+          warehouse_name: response.data.warehouse_name,
+          warehouse_id: response.data.warehouse_id,
+        };
+        // setWarehouseId(response.data.warehouse_id);
+        setCategory(response.data.category);
+        setQuantity(response.data.quantity);
+        setStatus(response.data.status);
+        convertStatus();
+        setWarehouse(newWarehouse);
+        console.log(newWarehouse);
+      } catch (e) {
+        console.error("error getting item data:", e);
+      }
+    };
+    fetchItemInfo();
+    convertStatus();
+  }, []);
 
   const handleRadioButton = (value) => {
     setInStock((isInStock) => !isInStock);
-    setStatus({ value });
+    setStatus(value);
   };
 
-  // const handleOnSubmit = (e) => {
-  //   e.preventDefault();
-  //   let newErrors = {
-  //     item_name: false,
-  //     description: false,
-  //     category: false,
-  //     status: false,
-  //     quantity: false,
-  //   };
-  //   if (!item_name) {
-  //     newErrors.item_name = true;
-  //   }
-  //   if (!description) {
-  //     newErrors.description = true;
-  //   }
-  //   if (!category) {
-  //     newErrors.category = true;
-  //   }
-  //   if (!status) {
-  //     newErrors.status = true;
-  //   }
-  //   if (!quantity) {
-  //     newErrors.quantity = true;
-  //   }
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    let newErrors = {
+      item_name: false,
+      description: false,
+      category: false,
+      status: false,
+      quantity: false,
+    };
+    if (!item_name) {
+      newErrors.item_name = true;
+    }
+    if (!description) {
+      newErrors.description = true;
+    }
+    if (!category) {
+      newErrors.category = true;
+    }
+    if (!status) {
+      newErrors.status = true;
+    }
+    if (!quantity) {
+      newErrors.quantity = true;
+    }
+    console.log(newErrors);
+    setErrors(newErrors);
 
-  //   setErrors(newErrors);
-  //   console.log(newErrors.contact_email);
-  //   if (
-  //     !newErrors.item_name &&
-  //     !newErrors.description &&
-  //     !newErrors.category &&
-  //     !newErrors.status &&
-  //     !newErrors.quantity
-  //   ) {
-  //     const editedItem = {
-  //       item_name: itemName,
-  //       description: description,
-  //       category: category,
-  //       status: status,
-  //       quantity: quantity,
-  //     };
-  //     async function updateInventoryItem() {
-  //       try {
-  //         const res = await axios.put(
-  //           `${url}/inventory/editInventoryItem`,
-  //           editedItem
-  //         );
-  //         console.log(res.data);
-  //       } catch (error) {
-  //         console.log("error caught in the catch block:", error);
-  //       }
-  //     }
-  //     updateInventoryItem();
-  //     const user = confirm(
-  //       `The inventory item has been updated successfully✅`
-  //     );
-  //     if (user === true) {
-  //       nav("/inventory");
-  //     }
-  //   }
-  // };
+    if (
+      !newErrors.item_name &&
+      !newErrors.description &&
+      !newErrors.category &&
+      !newErrors.status &&
+      !newErrors.quantity
+    ) {
+      const editedItem = {
+        warehouse_id: warehouse.warehouse_id,
+        item_name: item_name,
+        description: description,
+        category: category,
+        status: status,
+        quantity: quantity,
+      };
+      async function updateInventoryItem() {
+        try {
+          console.log(warehouse.warehouse_id);
+          console.log(warehouse.warehouse_name);
+          console.log(editedItem.item_name);
+          const res = await axios.put(
+            `${url}/inventory/${inventoryId}`,
+            editedItem
+          );
+        } catch (error) {
+          console.log(editedItem);
+          console.log("error caught in the catch block:", error);
+        }
+      }
+      updateInventoryItem();
+      const user = confirm(
+        `The inventory item has been updated successfully✅`
+      );
+      if (user === true) {
+        nav("/inventory");
+      }
+    }
+  };
 
   return (
     <section className="edit-inventory">
@@ -133,7 +174,7 @@ const EditInventoryItem = () => {
       </div>
       <form
         className="edit-inventory__form"
-        // onSubmit={(e) => handleOnSubmit(e)}
+        onSubmit={(e) => handleOnSubmit(e)}
       >
         <div className="edit-inventory__form-info">
           <div className="item-details">
@@ -143,10 +184,10 @@ const EditInventoryItem = () => {
               <input
                 className="item-details__name"
                 type="text"
-                name="itemName"
+                name="item_name"
                 placeholder="Item Name"
-                onChange={(e) => setItemName(e.target.value)}
-                value={itemInfo.item_name}
+                onChange={(e) => setitem_name(e.target.value)}
+                value={item_name}
               />
             </label>
             <label className="item-details__description-label">
@@ -156,7 +197,7 @@ const EditInventoryItem = () => {
                 name="description"
                 placeholder="Description"
                 onChange={(e) => setDescription(e.target.value)}
-                value={itemInfo.description}
+                value={description}
               ></textarea>
             </label>
             <label className="item-details__category-label">
@@ -192,8 +233,8 @@ const EditInventoryItem = () => {
                     type="radio"
                     name="status"
                     value="in stock"
-                    checked={status === 1}
-                    onChange={() => handleRadioButton(1)}
+                    checked={status === "In Stock"}
+                    onChange={() => handleRadioButton("In Stock")}
                   />
                   In stock
                 </label>
@@ -203,16 +244,32 @@ const EditInventoryItem = () => {
                     type="radio"
                     name="status"
                     value="out of stock"
-                    checked={status === 2}
-                    onChange={() => handleRadioButton(2)}
+                    checked={status === "Out of Stock"}
+                    onChange={() => handleRadioButton("Out of Stock")}
                   />
                   Out of stock
                 </label>
               </div>
-              {isInStock && <QuantityField />}
+              {isInStock && (
+                <QuantityField
+                  itemInfo={itemInfo}
+                  quantity={quantity}
+                  setQuantity={setQuantity}
+                />
+              )}
               <label className="item-availability__warehouse-label">
                 Warehouse
                 <select
+                  className="item-availability__warehouse"
+                  name="warehouse"
+                  onChange={(e) => setWarehouse(e.target.value)}
+                  value={warehouse.warehouse_name}
+                >
+                  {warehouses.map((warehouse) => (
+                    <option>{warehouse.warehouse_name}</option>
+                  ))}
+                </select>
+                {/* <select
                   className="item-availability__warehouse"
                   name="warehouse"
                 >
@@ -225,7 +282,7 @@ const EditInventoryItem = () => {
                   <option value="seattle">Seattle</option>
                   <option value="miami">Miami</option>
                   <option value="boston">Boston</option>
-                </select>
+                </select> */}
               </label>
             </div>
           </div>
@@ -242,17 +299,17 @@ const EditInventoryItem = () => {
               value="Cancel"
             />
           </Link>
-          <Link
+          {/* <Link
             className="edit-inventory__form-save-button-link"
             to="/inventoryDetails"
-          >
-            <input
-              className="edit-inventory__form-save-button"
-              type="submit"
-              name="save"
-              value="Save"
-            />
-          </Link>
+          > */}
+          <input
+            className="edit-inventory__form-save-button"
+            type="submit"
+            name="save"
+            value="Save"
+          />
+          {/* </Link> */}
         </div>
       </form>
     </section>
