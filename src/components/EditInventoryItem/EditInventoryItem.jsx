@@ -1,5 +1,4 @@
 import "../EditInventoryItem/EditInventoryItem.scss";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
