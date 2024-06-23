@@ -2,7 +2,7 @@ import "./EditWarehouse.scss";
 import { Link } from "react-router-dom";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
-const EditWarehouse = ({ ID, selectedWarehouses }) => {
+const EditWarehouse = ({ ID, warehouses }) => {
   return (
     <main className="add-inventory">
       <div className="add-inventory__title">
