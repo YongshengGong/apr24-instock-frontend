@@ -104,14 +104,12 @@ function App() {
           element={<AddNewWarehousePage button="warehousesButton" />}
         ></Route>
         <Route
-          path="/EditWarehouse/:warehouseId"
+          path="/EditWarehouse"
           element={
             <EditWarehousePage
               button="warehousesButton"
-              warehouses={warehouses}
               ID={ID}
-            />
-          }
+              warehouses={warehouses} />}
         ></Route>
         <Route
           path="/addInventory"
