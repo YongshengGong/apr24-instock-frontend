@@ -4,7 +4,7 @@
 @use "../../styles/partials/topography" as *;
 @use "../../styles/partials/variables" as *;
 
-.add-inventory {
+.add-warehouse {
   width: calc(100vw - 3rem);
   border-radius: 4px;
   background-color: $white-globalWhite;
@@ -132,26 +132,37 @@
   }
 
   &__position-label {
-    @include label
+    @include label;
+    &--error {
+      border: 1px solid #D22D2D;
+    }
   }
   &__position {
-    @include label-input
+    @include label-input;
+    &--error {
+      border: 1px solid #D22D2D;
+    }
   }
   &__phone-label {
   @include label
   }
   &__phone {
- @include label-input
+ @include label-input;
+ &--error {
+  border: 1px solid #D22D2D;
+}
   }
   &__email-label {
     @include label
   }
   &__email {
-    @include label-input
+    @include label-input;  &--error {
+      border: 1px solid #D22D2D;
+    }
   }
 }
 
-.add-inventory__form-buttons {
+.add-warehouse__form-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -163,7 +174,7 @@
   }
 }
 
-.add-inventory__form-cancel-button-link {
+.add-warehouse__form-cancel-button-link {
   text-decoration: none;
   width: 100%;
 
@@ -172,7 +183,7 @@
   }
 }
 
-.add-inventory__form-cancel-button {
+.add-warehouse__form-cancel-button {
   background-color: $white-globalWhite;
   color: $cloud-outlines-dividers-borders-tableSortingIcon;
   border-radius: 20px;
@@ -185,16 +196,7 @@
   border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
 }
 
-.add-inventory__form-save-button-link {
-  text-decoration: none;
-  width: 100%;
-  margin: 1rem;
-  @include tablet {
-    width: auto;
-  }
-}
-
-.add-inventory__form-save-button {
+.add-warehouse__form-save-button {
   background-color: $instockIndigo-interactiveElements;
   color: $white-globalWhite;
   border-radius: 20px;
@@ -205,4 +207,8 @@
   justify-content: center;
   align-items: center;
   border: none;
+  margin: 1rem;
+  @include tablet {
+    width: auto;
+  }
 }
