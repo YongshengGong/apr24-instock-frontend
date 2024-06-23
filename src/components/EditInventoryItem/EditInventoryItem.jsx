@@ -2,11 +2,15 @@ import "../EditInventoryItem/EditInventoryItem.scss";
 import { Link, useNavigate } from "react-router-dom";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
-const EditInventoryItem = () => {
+const EditInventoryItem = (selectedItem) => {
+  // console.log(selectedItem);
   return (
     <section className="edit-inventory">
       <div className="edit-inventory__title">
-        <Link className="edit-inventory__back-button-link" to="/inventoryDetails">
+        <Link
+          className="edit-inventory__back-button-link"
+          to="/inventoryDetails"
+        >
           <img
             className="edit-inventory__back-button"
             src={backArrowLogo}
@@ -93,7 +97,10 @@ const EditInventoryItem = () => {
           </div>
         </div>
         <div className="edit-inventory__form-buttons">
-          <Link className="edit-inventory__form-cancel-button-link" to="/inventoryDetails">
+          <Link
+            className="edit-inventory__form-cancel-button-link"
+            to="/inventoryDetails"
+          >
             <input
               className="edit-inventory__form-cancel-button"
               type="button"
@@ -101,7 +108,10 @@ const EditInventoryItem = () => {
               value="Cancel"
             />
           </Link>
-          <Link className="edit-inventory__form-save-button-link" to="/inventoryDetails">
+          <Link
+            className="edit-inventory__form-save-button-link"
+            to="/inventoryDetails"
+          >
             <input
               className="edit-inventory__form-save-button"
               type="submit"

@@ -18,7 +18,7 @@ function InventoryItemDetails({ selectedInventory }) {
         </div>
         {/* Need to update below link once warehouse edit page is created. */}
         <Link
-          to={`/editInventoryItem`} //${selectedInventory.id`}
+          to={`/editInventoryItem/${selectedInventory.id}`}
           className="item-details__edit-button-link"
         >
           <EditButton />

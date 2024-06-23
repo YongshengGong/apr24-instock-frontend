@@ -100,7 +100,7 @@ const InventoryFullList = ({ inventory, searchQuery, handleSearch }) => {
               <div className="inventory__info-item inventory__info-item--actions">
                 {/* Need to Wrap these in Links! */}
                 <img src={trashcan} alt="Delete" className="inventory__icon" />
-                <Link to={"/editInventoryItem"}>
+                <Link to={`/editInventoryItem/${inventory.id}`}>
                   <img src={editicon} alt="Edit" className="inventory__icon" />
                 </Link>
               </div>
