@@ -49,7 +49,7 @@ function App() {
     try {
       const res = await axios.post(`http://localhost:8080/warehouses/addNewWarehouse`, newWarehouse);
       console.log(res.data);
-      setTest(res.data)
+      setTest(res.data);
     }
     catch (error) {
       console.log("error caught in the catch block:", error);

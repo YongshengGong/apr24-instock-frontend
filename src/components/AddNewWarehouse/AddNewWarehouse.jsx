@@ -88,9 +88,7 @@ const AddNewWarehouse = ({ addNewWarehouse }) => {
       }
     }
   }
-  const refreshWarehouses = () => {
-    nav('/');
-  }
+ 
 
 
   return (
@@ -227,7 +225,7 @@ const AddNewWarehouse = ({ addNewWarehouse }) => {
               value="Cancel"
             />
           </Link>
-          <button className="add-warehouse__form-save-button" type="submit" onClick={refreshWarehouses} >
+          <button className="add-warehouse__form-save-button" type="submit" >
             + Add Warehouse
           </button>
         </div>
