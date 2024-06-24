@@ -97,7 +97,7 @@ const EditWarehouse = ({ ID, warehouses }) => {
       addNewWarehouse();
       const user = confirm(`This warehouse has been updated successfully✅`);
       if (user === true) {
-        nav(`/warehouses/${ID}`);
+        nav(`/`);
       }
     }
 
@@ -105,7 +105,7 @@ const EditWarehouse = ({ ID, warehouses }) => {
   return (
     <main className="add-warehouse">
       <div className="add-warehouse__title">
-        <Link className="add-warehouse__back-button-link" to={`/warehouses/${ID}`}>
+        <Link className="add-warehouse__back-button-link" to={`/`}>
           <img
             className="add-warehouse__back-button"
             src={backArrowLogo}
@@ -228,7 +228,7 @@ const EditWarehouse = ({ ID, warehouses }) => {
           </div>
         </div>
         <div className="add-warehouse__form-buttons">
-          <Link className="add-warehouse__form-cancel-button-link" to={`/warehouses/${ID}`}>
+          <Link className="add-warehouse__form-cancel-button-link" to={`/`}>
             <input
               className="add-warehouse__form-cancel-button"
               type="button"
