@@ -22,15 +22,7 @@ const AddInventoryItem = ({ warehouses }) => {
   });
 
   const [isInStock, setInStock] = useState(true);
-  const convertStatus = () => {
-    if (!status === "In Stock") {
-      setStatus("Out of Stock");
-      setInStock(false);
-    } else {
-      setStatus("In Stock");
-      setInStock(true);
-    }
-  };
+
   const handleRadioButton = (value) => {
     setInStock((isInStock) => !isInStock);
     setStatus(value);
@@ -91,6 +83,7 @@ const AddInventoryItem = ({ warehouses }) => {
           console.log("error caught in the catch block:", error);
         }
       }
+
       addNewInventory();
       const user = confirm(`The new inventory has been created successfully✅`);
       if (user === true) {
