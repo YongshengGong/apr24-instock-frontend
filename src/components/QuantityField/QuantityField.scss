@@ -1,0 +1,53 @@
+@use "../../styles/partials/resets" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/topography" as *;
+@use "../../styles/partials/variables" as *;
+
+.item-availability {
+  &__quantity-info {
+    display: flex;
+    flex-direction: column;
+  }
+  &__quantity-label {
+    font-family: titillium;
+    font-weight: 600;
+    font-size: $mobile-h3LabelsLinksButtons_textSize;
+    line-height: $mobile-h3LabelsLinksButtons_lineHeight;
+    margin-bottom: 1rem;
+  }
+  &__quantity-span {
+    display: block;
+  }
+  &__quantity {
+    font-family: titillium;
+    font-weight: 400;
+    font-size: $tabletDesktop-p3BodySmall_textSize;
+    line-height: $tabletDesktop-p3BodySmall_lineHeight;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+    padding: 0.5rem 1rem;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    color: $instockBlack-globalText;
+    height: 2.25rem;
+    appearance: none;
+
+    @include tablet {
+      height: 2.375rem;
+    }
+
+    @include desktop {
+      width: auto;
+    }
+
+    &::placeholder {
+      color: $cloud-outlines-dividers-borders-tableSortingIcon;
+    }
+    &:focus {
+      border: 1px solid $instockIndigo-interactiveElements;
+      outline: none;
+    }
+  }
+}

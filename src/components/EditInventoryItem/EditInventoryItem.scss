@@ -11,9 +11,9 @@
   display: flex;
   flex-direction: column;
   color: $instockBlack-globalText;
-  margin:0 auto;
-  margin-top:-4.5rem; 
-  border:1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
+  margin: 0 auto;
+  margin-top: -4.5rem;
+  border: 1px solid $cloud-outlines-dividers-borders-tableSortingIcon;
 
   @include tablet {
     width: calc(100vw - 3rem);
@@ -198,6 +198,7 @@
     line-height: $mobile-h2SubHeader_lineHeight;
     margin-bottom: 1rem;
   }
+
   &__warehouse-label {
     font-family: titillium;
     font-weight: 600;
