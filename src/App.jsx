@@ -109,8 +109,8 @@ function App() {
           element={
             <EditWarehousePage
               button="warehousesButton"
-              warehouses={warehouses}
               ID={ID}
+              warehouses={warehouses}
             />
           }
         ></Route>
