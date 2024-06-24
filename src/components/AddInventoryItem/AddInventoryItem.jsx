@@ -4,13 +4,14 @@ import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import QuantityField from "../QuantityField/QuantityField";
 const AddInventoryItem = ({ warehouses }) => {
   const nav = useNavigate();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [status, setStatus] = useState("In Stock");
-  const [qty, setQty] = useState("0");
+  const [quantity, setQuantity] = useState("");
   const [warehouse, setWarehouse] = useState("");
   const [errors, setErrors] = useState({
     name: false,
@@ -20,15 +21,30 @@ const AddInventoryItem = ({ warehouses }) => {
     warehouse: false,
   });
 
+  const [isInStock, setInStock] = useState(true);
+  const convertStatus = () => {
+    if (!status === "In Stock") {
+      setStatus("Out of Stock");
+      setInStock(false);
+    } else {
+      setStatus("In Stock");
+      setInStock(true);
+    }
+  };
+  const handleRadioButton = (value) => {
+    setInStock((isInStock) => !isInStock);
+    setStatus(value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let newErrors = {
       name: false,
       description: false,
       category: false,
-      qty: false,
+      quantity: false,
       warehouse: false,
-    }
+    };
     if (!name) {
       newErrors.name = true;
     }
@@ -38,19 +54,23 @@ const AddInventoryItem = ({ warehouses }) => {
     if (!category) {
       newErrors.category = true;
     }
-    if (!qty) {
-      newErrors.qty = true;
+    if (!quantity) {
+      newErrors.quantity = true;
     }
     if (!warehouse) {
       newErrors.warehouse = true;
     }
     setErrors(newErrors);
-    if (!newErrors.name &&
+    if (
+      !newErrors.name &&
       !newErrors.description &&
       !newErrors.category &&
-      !newErrors.qty &&
-      !newErrors.warehouse) {
-      const filteredWarehouse = warehouses.find(ware => ware.warehouse_name === warehouse);
+      !newErrors.quantity &&
+      !newErrors.warehouse
+    ) {
+      const filteredWarehouse = warehouses.find(
+        (ware) => ware.warehouse_name === warehouse
+      );
       console.log(filteredWarehouse.id);
       const newInventory = {
         warehouse_id: filteredWarehouse.id,
@@ -58,14 +78,16 @@ const AddInventoryItem = ({ warehouses }) => {
         description: description,
         category: category,
         status: status,
-        quantity: qty
-      }
+        quantity: quantity,
+      };
       async function addNewInventory() {
         try {
-          const res = await axios.post(`http://localhost:8080/inventory`, newInventory);
+          const res = await axios.post(
+            `http://localhost:8080/inventory`,
+            newInventory
+          );
           console.log(res.data);
-        }
-        catch (error) {
+        } catch (error) {
           console.log("error caught in the catch block:", error);
         }
       }
@@ -75,7 +97,7 @@ const AddInventoryItem = ({ warehouses }) => {
         nav("/inventory");
       }
     }
-  }
+  };
 
   return (
     <main className="add-inventory">
@@ -89,43 +111,51 @@ const AddInventoryItem = ({ warehouses }) => {
         </Link>
         <h1 className="add-inventory__title-text">Add New Inventory Item</h1>
       </div>
-      <form className="add-inventory__form" onSubmit={e => handleSubmit(e)}>
+      <form className="add-inventory__form" onSubmit={(e) => handleSubmit(e)}>
         <div className="add-inventory__form-info">
           <div className="item-details">
             <h2 className="item-details__title">Item Details</h2>
             <label className="item-details__name-label">
               Item Name
               <input
-                className={errors.name ?
-                  ("item-details__name item-details__name--error") :
-                  ("item-details__name")}
+                className={
+                  errors.name
+                    ? "item-details__name item-details__name--error"
+                    : "item-details__name"
+                }
                 type="text"
                 name="itemName"
                 placeholder="Item Name"
                 value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               ></input>
             </label>
             <label className="item-details__description-label">
               Description
               <textarea
-                className={errors.description ?
-                  ("item-details__description item-details__description--error") :
-                  ("item-details__description")}
+                className={
+                  errors.description
+                    ? "item-details__description item-details__description--error"
+                    : "item-details__description"
+                }
                 name="descrition"
                 placeholder="Please enter a brief item description..."
                 value={description}
-                onChange={e => setDescription(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)}
               ></textarea>
             </label>
             <label className="item-details__category-label">
               Category
-              <select className={errors.category ?
-                ("item-details__category item-details__category--error") :
-                ("item-details__category")}
+              <select
+                className={
+                  errors.category
+                    ? "item-details__category item-details__category--error"
+                    : "item-details__category"
+                }
                 name="category"
                 value={category}
-                onChange={e => setCategory(e.target.value)}>
+                onChange={(e) => setCategory(e.target.value)}
+              >
                 <option hidden>Please select</option>
                 <option value="Electronics">Electronics</option>
                 <option value="Gear">Gear</option>
@@ -146,7 +176,7 @@ const AddInventoryItem = ({ warehouses }) => {
                     type="radio"
                     name="radio"
                     value="In Stock"
-                    onChange={e => setStatus(e.target.value)}
+                    onChange={() => handleRadioButton("In Stock")}
                     defaultChecked
                   ></input>
                   In stock
@@ -157,64 +187,58 @@ const AddInventoryItem = ({ warehouses }) => {
                     type="radio"
                     name="radio"
                     value="Out of Stock"
-                    onChange={e => setStatus(e.target.value)}
+                    onChange={() => handleRadioButton("Out of Stock")}
                   ></input>
                   Out of stock
                 </label>
               </div>
-              <div className="item-availability__quantity-info">
-                <label className="item-availability__quantity-label">
-                  <span className="item-availability__quantity-span">
-                    Quantity
-                  </span>
-                  <input
-                    className={errors.qty ?
-                      ("item-availability__quantity item-availability__quantity--error") :
-                      ("item-availability__quantity")}
-                    type="number"
-                    name="quantity"
-                    value={qty}
-                    onChange={e => setQty(e.target.value)}
-                  ></input>
-                </label>
-              </div>
+              {isInStock && (
+                <QuantityField quantity={quantity} setQuantity={setQuantity} />
+              )}
               <label className="item-availability__warehouse-label">
                 Warehouse
                 <select
-                  className={errors.warehouse ?
-                    ("item-availability__warehouse item-availability__warehouse--error") :
-                    ("item-availability__warehouse")}
+                  className={
+                    errors.warehouse
+                      ? "item-availability__warehouse item-availability__warehouse--error"
+                      : "item-availability__warehouse"
+                  }
                   name="warehouse"
                   value={warehouse}
-                  onChange={e => setWarehouse(e.target.value)}
+                  onChange={(e) => setWarehouse(e.target.value)}
                 >
-                  <option value="Please select" hidden>Please select</option>
-                  {
-                    warehouses.map(warehouse => {
-                      return (<option value={warehouse.warehouse_name} key={warehouse.id}>
+                  <option value="Please select" hidden>
+                    Please select
+                  </option>
+                  {warehouses.map((warehouse) => {
+                    return (
+                      <option
+                        value={warehouse.warehouse_name}
+                        key={warehouse.id}
+                      >
                         {warehouse.warehouse_name}
                       </option>
-                      )
-                    })
-                  }
+                    );
+                  })}
                 </select>
               </label>
             </div>
           </div>
         </div>
         <div className="add-inventory__form-buttons">
-          <Link className="add-inventory__form-cancel-button-link" to={"/inventory"}>
+          <Link
+            className="add-inventory__form-cancel-button-link"
+            to={"/inventory"}
+          >
             <input
               className="add-inventory__form-cancel-button"
               type="button"
               value="Cancel"
             />
           </Link>
-          <button
-            className="add-inventory__form-save-button"
-            type="submit"
-          >+ Add Item</button>
-
+          <button className="add-inventory__form-save-button" type="submit">
+            + Add Item
+          </button>
         </div>
       </form>
     </main>
