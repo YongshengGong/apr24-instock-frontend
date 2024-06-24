@@ -21,7 +21,7 @@ const AddInventoryItem = ({ warehouses }) => {
     warehouse: false,
   });
 
-  const [isInStock, setInStock] = useState(false);
+  const [isInStock, setInStock] = useState(true);
   const convertStatus = () => {
     if (!status === "In Stock") {
       setStatus("Out of Stock");
@@ -42,7 +42,7 @@ const AddInventoryItem = ({ warehouses }) => {
       name: false,
       description: false,
       category: false,
-      qty: false,
+      quantity: false,
       warehouse: false,
     };
     if (!name) {
@@ -54,8 +54,8 @@ const AddInventoryItem = ({ warehouses }) => {
     if (!category) {
       newErrors.category = true;
     }
-    if (!qty) {
-      newErrors.qty = true;
+    if (!quantity) {
+      newErrors.quantity = true;
     }
     if (!warehouse) {
       newErrors.warehouse = true;
@@ -65,7 +65,7 @@ const AddInventoryItem = ({ warehouses }) => {
       !newErrors.name &&
       !newErrors.description &&
       !newErrors.category &&
-      !newErrors.qty &&
+      !newErrors.quantity &&
       !newErrors.warehouse
     ) {
       const filteredWarehouse = warehouses.find(
@@ -78,7 +78,7 @@ const AddInventoryItem = ({ warehouses }) => {
         description: description,
         category: category,
         status: status,
-        quantity: qty,
+        quantity: quantity,
       };
       async function addNewInventory() {
         try {
