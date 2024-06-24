@@ -6,14 +6,14 @@ import QuantityField from "../QuantityField/QuantityField";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const EditInventoryItem = () => {
+const EditInventoryItem = ({ inventory, warehouses }) => {
   const url = "http://localhost:8080";
   const nav = useNavigate();
   const [itemInfo, setItemInfo] = useState({});
   const { inventoryId } = useParams();
   const [item_name, setitem_name] = useState("");
   const [description, setDescription] = useState("");
-  const warehouses = [
+  const warehouses1 = [
     { warehouse_name: "Please select", warehouse_id: "" },
     { warehouse_name: "Manhattan", warehouse_id: 1 },
     { warehouse_name: "Washington", warehouse_id: 2 },
@@ -24,11 +24,13 @@ const EditInventoryItem = () => {
     { warehouse_name: "Miami", warehouse_id: 7 },
     { warehouse_name: "Boston", warehouse_id: 8 },
   ];
-  const [warehouse, setWarehouse] = useState({
-    warehouse_name: "",
-    warehouse_id: "",
-  });
-  // const [warehouse_id, setWarehouseId] = useState("");
+  const [warehouses, setWarehouses] = useState([]);
+  // const [warehouse, setWarehouse] = useState("")
+  //   {
+  //   warehouse_name: "",
+  //   warehouse_id: "",
+  // }
+  const [warehouse_id, setWarehouseId] = useState("");
 
   const [status, setStatus] = useState(2);
   const [quantity, setQuantity] = useState("");
@@ -90,6 +92,16 @@ const EditInventoryItem = () => {
     setStatus(value);
   };
 
+  const handleWarehouse = (e) => {
+    const selectedWarehouseName = e.targe.value;
+    const warehouseFind = warehouses.find((w) => {
+      w.name === selectedWarehouseName;
+    });
+    if (warehouseFind) {
+      setWarehouseId(warehouseFind.id);
+    }
+  };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     let newErrors = {
@@ -125,7 +137,7 @@ const EditInventoryItem = () => {
       !newErrors.quantity
     ) {
       const editedItem = {
-        warehouse_id: warehouse.warehouse_id,
+        warehouse_id: warehouse_id,
         item_name: item_name,
         description: description,
         category: category,
@@ -265,15 +277,20 @@ const EditInventoryItem = () => {
                   onChange={(e) => setWarehouse(e.target.value)}
                   value={warehouse.warehouse_name}
                 >
-                  {warehouses.map((warehouse) => (
-                    <option>{warehouse.warehouse_name}</option>
+                  {warehouses1.map((warehouse) => (
+                    <option key={warehouse.warehouse_id}>
+                      {warehouse.warehouse_name}
+                    </option>
                   ))}
                 </select>
                 {/* <select
                   className="item-availability__warehouse"
                   name="warehouse"
                 >
-                  <option value="">Please select</option>
+                  {<option value="">Please select</option>}
+                  <option value="">
+                    {selectedItem.selectedItem.warehouse_name}
+                  </option>
                   <option value="manhattan">Manhattan</option>
                   <option value="washington">Washington</option>
                   <option value="jersey">Jersey</option>
@@ -284,6 +301,7 @@ const EditInventoryItem = () => {
                   <option value="boston">Boston</option>
                 </select> */}
               </label>
+              <p>{warehouse.warehouse_id}</p>
             </div>
           </div>
         </div>

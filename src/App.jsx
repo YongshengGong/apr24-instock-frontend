@@ -13,6 +13,8 @@ import axios from "axios";
 function App() {
   const [warehouses, setWarehouses] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [inventory, setInventory] = useState([]);
+  const [searchQueryInv, setSearchQueryInv] = useState("");
   const [ID, setID] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -25,8 +27,21 @@ function App() {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/inventory");
+        setInventory(response.data);
+      } catch (error) {
+        console.log(`Looks like there is an error fetching: ${error}`);
+      }
+    };
+    fetchData();
+  }, []);
+
   function passId(id) {
-    setID(id)
+    setID(id);
   }
 
   return (
@@ -34,35 +49,79 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<WarehousePage button="warehousesButton" warehouses={warehouses} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />}
+          element={
+            <WarehousePage
+              button="warehousesButton"
+              warehouses={warehouses}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+          }
         ></Route>
         <Route
           path="/warehouses/:warehouseId"
-          element={<WarehouseDetailsPage button="warehousesButton" warehouses={warehouses} passId={passId} />}
+          element={
+            <WarehouseDetailsPage
+              button="warehousesButton"
+              warehouses={warehouses}
+              passId={passId}
+            />
+          }
         ></Route>
         <Route
-          path="/inventoryDetails"
-          element={<InventoryItemDetailsPage button="inventoryButton" />}
+          path="/inventoryDetails/:inventoryId"
+          element={
+            <InventoryItemDetailsPage
+              button="inventoryButton"
+              inventory={inventory}
+              passId={passId}
+            />
+          }
         ></Route>
         <Route
           path="/editInventoryItem/:inventoryId"
-          element={<EditInventoryItemPage button="inventoryButton" />}
+          element={
+            <EditInventoryItemPage
+              button="inventoryButton"
+              inventory={inventory}
+              warehouses={warehouses}
+              passId={passId}
+            />
+          }
         ></Route>
         <Route
           path="/inventory"
-          element={<InventoryPage button="inventoryButton" />}
+          element={
+            <InventoryPage
+              button="inventoryButton"
+              inventory={inventory}
+              searchQueryInv={searchQueryInv}
+              setSearchQueryInv={setSearchQueryInv}
+            />
+          }
         ></Route>
         <Route
           path="/addNewWarehouse"
           element={<AddNewWarehousePage button="warehousesButton" />}
         ></Route>
         <Route
-          path="/EditWarehouse"
-          element={<EditWarehousePage button="warehousesButton" ID={ID} />}
+          path="/EditWarehouse/:warehouseId"
+          element={
+            <EditWarehousePage
+              button="warehousesButton"
+              warehouses={warehouses}
+              ID={ID}
+            />
+          }
         ></Route>
         <Route
           path="/addInventory"
-          element={<AddInventoryItemPage button="inventoryButton" />}
+          element={
+            <AddInventoryItemPage
+              button="inventoryButton"
+              warehouses={warehouses}
+            />
+          }
         ></Route>
       </Routes>
     </BrowserRouter>
