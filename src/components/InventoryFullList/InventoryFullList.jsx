@@ -5,8 +5,41 @@ import filtericon from "../../assets/images/icons/nav/sort-default.svg";
 import { PrimaryButtonInventory } from "../CallToActions/PrimaryButton";
 import { Link } from "react-router-dom";
 import "./InventoryFullList.scss";
+import close from "../../assets/images/icons/action/close-24px.svg";
+import { useState } from "react";
+import axios from "axios";
 
 const InventoryFullList = ({ inventory, searchQuery, handleSearch }) => {
+  console.log(inventory)
+  const [inv, setInv] = useState('');
+  const [popup, setPopup] = useState(false);
+  const [invID, setInvID] = useState('');
+  const handleDelete = (invName, id) => {
+    setInv(invName);
+    setPopup(true);
+    setInvID(id);
+  }
+  const handleConfirmDelete = async (passedID) => {
+    try {
+      const res = await axios.delete(`http://localhost:8080/inventory/${passedID}`);
+      const user = confirm("You have just deleted the inventory, please mannually restart backend NODE to see the newest update");
+      if (user) {
+        setPopup(false);
+      } else {
+        setPopup(false);
+      }
+    }
+    catch (error) {
+      if (error.response.status == 404) {
+        const user = confirm("This inventory has been deleted or doesn't exit. If you have just deleted it, please mannually restart backend NODE to see the newest update");
+        if (user) {
+          setPopup(false);
+        } else {
+          setPopup(false);
+        }
+      }
+    }
+  }
   return (
     <section className="inventory">
       <header className="inventory__header">
@@ -99,7 +132,7 @@ const InventoryFullList = ({ inventory, searchQuery, handleSearch }) => {
               </div>
               <div className="inventory__info-item inventory__info-item--actions">
                 {/* Need to Wrap these in Links! */}
-                <img src={trashcan} alt="Delete" className="inventory__icon" />
+                <img src={trashcan} alt="Delete" className="inventory__icon" onClick={() => { handleDelete(inventory.item_name, inventory.id) }} />
                 <Link to={`/editInventoryItem/${inventory.id}`}>
                   <img src={editicon} alt="Edit" className="inventory__icon" />
                 </Link>
@@ -108,6 +141,18 @@ const InventoryFullList = ({ inventory, searchQuery, handleSearch }) => {
           </li>
         ))}
       </ul>
+      <section className={popup == true ? "delete-container" : "delete-container delete-container--hidden"}>
+        <section className="delete">
+          <img src={close} className="delete__close" onClick={() => setPopup(false)} />
+          <h1 className="delete__title">Delete {inv} inventory item?</h1>
+          <p className="delete__paragraph">Please confirm that you'd like to delete {inv} from the inventory list.
+            You won't be able to undo this action.</p>
+          <section className="delete__buttons">
+            <button className="delete__buttons--1" onClick={() => setPopup(false)}>Cancel</button>
+            <button className="delete__buttons--2" onClick={() => { handleConfirmDelete(invID) }}>Delete</button>
+          </section>
+        </section>
+      </section>
     </section>
   );
 };

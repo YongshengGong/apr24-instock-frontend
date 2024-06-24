@@ -18,7 +18,7 @@ function WarehouseDetails({ selectedWarehouse }) {
             {selectedWarehouse.warehouse_name}
           </h1>
         </div>
-        <Link to={"/editWarehouse"} className="wh-details__edit-button-link">
+        <Link to={`/editWarehouse/${selectedWarehouse.id}`} className="wh-details__edit-button-link">
           <EditButton />
         </Link>
       </header>

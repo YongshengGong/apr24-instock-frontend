@@ -40,9 +40,9 @@ function App() {
     fetchData();
   }, []);
 
-  // function passId(id) {
-  //   setID(id);
-  // }
+  function passId(id) {
+    setID(id);
+  }
 
   return (
     <BrowserRouter>
@@ -64,7 +64,7 @@ function App() {
             <WarehouseDetailsPage
               button="warehousesButton"
               warehouses={warehouses}
-              // passId={passId}
+              passId={passId}
             />
           }
         ></Route>
@@ -110,7 +110,7 @@ function App() {
             <EditWarehousePage
               button="warehousesButton"
               ID={ID}
-              warehouses={warehouses}
+              warehouses={warehouses} 
             />
           }
         ></Route>
@@ -119,6 +119,7 @@ function App() {
           element={
             <AddInventoryItemPage
               button="inventoryButton"
+              ID={ID}
               warehouses={warehouses}
             />
           }

@@ -5,8 +5,39 @@ import filtericon from "../../assets/images/icons/nav/sort-default.svg";
 import "./TablesWarehouses.scss";
 import PrimaryButton from "../CallToActions/PrimaryButton";
 import { Link } from "react-router-dom";
-
+import close from "../../assets/images/icons/action/close-24px.svg";
+import { useState } from "react";
+import axios from "axios";
 const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
+  const [inv, setInv] = useState('');
+  const [popup, setPopup] = useState(false);
+  const [invID, setInvID] = useState('');
+  const handleDelete = (invName, id) => {
+    setInv(invName);
+    setPopup(true);
+    setInvID(id);
+  }
+  const handleConfirmDelete = async (passedID) => {
+    try {
+      const res = await axios.delete(`http://localhost:8080/warehouses/${passedID}`);
+      const user = confirm("You have just deleted the warehouse, please mannually restart backend NODE to see the newest update");
+      if (user) {
+        setPopup(false);
+      } else {
+        setPopup(false);
+      }
+    }
+    catch (error) {
+      if (error.response.status == 404) {
+        const user = confirm("This warehouse has been deleted or doesn't exit. If you have just deleted it, please mannually restart backend NODE to see the newest update");
+        if (user) {
+          setPopup(false);
+        } else {
+          setPopup(false);
+        }
+      }
+    }
+  }
   return (
     <section className="warehouses">
       <header className="warehouses__header">
@@ -82,7 +113,7 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
               </div>
               <div className="warehouses__info-item warehouses__info-item--actions">
                 {/* Need to Wrap these in Links! */}
-                <img src={trashcan} alt="Delete" className="warehouses__icon" />
+                <img src={trashcan} alt="Delete" className="warehouses__icon" onClick={() => { handleDelete(warehouse.warehouse_name, warehouse.id) }} />
                 <Link to={`/editWarehouse/${warehouse.id}`}>
                   <img src={editicon} alt="Edit" className="warehouses__icon" />
                 </Link>
@@ -91,6 +122,18 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
           </li>
         ))}
       </ul>
+      <section className={popup == true ? "delete-container" : "delete-container delete-container--hidden"}>
+        <section className="delete">
+          <img src={close} className="delete__close" onClick={() => setPopup(false)} />
+          <h1 className="delete__title">Delete {inv} warehouse?</h1>
+          <p className="delete__paragraph">Please confirm that you'd like to delete the {inv} from the list of
+            warehouses.You won't be able to undo this action.</p>
+          <section className="delete__buttons">
+            <button className="delete__buttons--1" onClick={() => setPopup(false)}>Cancel</button>
+            <button className="delete__buttons--2" onClick={() => { handleConfirmDelete(invID) }}>Delete</button>
+          </section>
+        </section>
+      </section>
     </section>
   );
 };

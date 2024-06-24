@@ -262,7 +262,7 @@ const EditInventoryItem = () => {
         <div className="edit-inventory__form-buttons">
           <Link
             className="edit-inventory__form-cancel-button-link"
-            to="/inventoryDetails"
+            to="/"
           >
             <input
               className="edit-inventory__form-cancel-button"
@@ -273,7 +273,7 @@ const EditInventoryItem = () => {
           </Link>
           <Link
             className="edit-inventory__form-save-button-link"
-            to="/inventoryDetails"
+            to="/"
           >
             <input
               className="edit-inventory__form-save-button"
