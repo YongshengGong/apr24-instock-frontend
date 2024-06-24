@@ -1,11 +1,12 @@
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import AddNewWarehouse from "../../components/AddNewWarehouse/AddNewWarehouse";
-function AddNewWarehousePage({button}) {
+import { addNewInventory } from "../../../../apr24-instock-backend/controllers/controllers";
+function AddNewWarehousePage({button,addNewWarehouse}) {
   return (
     <>
       <Header button={button}/>
-        <AddNewWarehouse />
+        <AddNewWarehouse addNewWarehouse={addNewWarehouse}/>
       <Footer />
     </>
   );

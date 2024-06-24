@@ -16,6 +16,7 @@ function App() {
   const [inventory, setInventory] = useState([]);
   const [searchQueryInv, setSearchQueryInv] = useState("");
   const [ID, setID] = useState(null);
+  const [test,setTest]=useState("");
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,7 +27,7 @@ function App() {
       }
     };
     fetchData();
-  }, []);
+  }, [test]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +43,16 @@ function App() {
 
   function passId(id) {
     setID(id);
+  }
+  async function addNewWarehouse(newWarehouse) {
+    try {
+      const res = await axios.post(`http://localhost:8080/warehouses/addNewWarehouse`, newWarehouse);
+      console.log(res.data);
+      setTest(res.data);
+    }
+    catch (error) {
+      console.log("error caught in the catch block:", error);
+    }
   }
 
   return (
@@ -102,7 +113,7 @@ function App() {
         ></Route>
         <Route
           path="/addNewWarehouse"
-          element={<AddNewWarehousePage button="warehousesButton" />}
+          element={<AddNewWarehousePage button="warehousesButton" addNewWarehouse={addNewWarehouse}/>}
         ></Route>
         <Route
           path="/EditWarehouse/:warehouseId"
