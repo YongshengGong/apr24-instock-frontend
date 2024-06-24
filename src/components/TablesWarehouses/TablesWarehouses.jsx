@@ -4,9 +4,7 @@ import editicon from "../../assets/images/icons/action/edit-24px.svg";
 import filtericon from "../../assets/images/icons/nav/sort-default.svg";
 import "./TablesWarehouses.scss";
 import PrimaryButton from "../CallToActions/PrimaryButton";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 
 const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
   return (
@@ -85,7 +83,9 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
               <div className="warehouses__info-item warehouses__info-item--actions">
                 {/* Need to Wrap these in Links! */}
                 <img src={trashcan} alt="Delete" className="warehouses__icon" />
-                <img src={editicon} alt="Edit" className="warehouses__icon" />
+                <Link to={`/editWarehouse/${warehouse.id}`}>
+                  <img src={editicon} alt="Edit" className="warehouses__icon" />
+                </Link>
               </div>
             </div>
           </li>

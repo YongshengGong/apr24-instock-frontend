@@ -1,49 +1,106 @@
 import React from "react";
 import "./Deletewarehousepage.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import close from "../../assets/images/icons/action/close-24px.svg";
 
-// Function to delete a warehouse
-async function deleteWarehouse(warehouseId) {
-  const url = `http://localhost:8080/warehouses/${warehouseId}`; // Replace with your API endpoint
+const Deletewarehousepage = ({ warehouse }) => {
+  const [inv, setInv] = React.useState("");
+  const [popup, setPopup] = React.useState(false);
+  const [invID, setInvID] = React.useState("");
 
-  try {
-    const response = await axios.delete(url);
-    console.log("Warehouse deleted successfully:", response.data);
-  } catch (error) {
-    console.error(
-      "Error deleting the warehouse:",
-      error.response ? error.response.data : error.message
-    );
-  }
-}
-const Deletewarehousepage = ({ onClose }) => {
-  const handleDelete = () => {
-    console.log("Warehouse deleted");
-    onClose();
+  const handleDelete = (invName, id) => {
+    setInv(invName);
+    setPopup(true);
+    setInvID(id);
+  };
+
+  const handleConfirmDelete = async (passedID) => {
+    try {
+      await axios.delete(`http://localhost:8080/warehouse/${passedID}`);
+      const user = confirm(
+        "You have just deleted the warehouse, please manually restart backend NODE to see the newest update"
+      );
+      if (user) {
+        setPopup(false);
+      }
+    } catch (error) {
+      if (error.response.status == 404) {
+        const user = confirm(
+          "This warehouse has been deleted or doesn't exist. If you have just deleted it, please manually restart backend NODE to see the newest update"
+        );
+        if (user) {
+          setPopup(false);
+        }
+      }
+    }
   };
 
   return (
-    <div className="dialog-overlay">
-      <div className="dialog-box">
-        <h2>Delete Washington warehouse?</h2>
-        <p>
-          Please confirm that you’d like to delete the Washington from the list
-          of warehouses. You won’t be able to undo this action.
-        </p>
-        <div className="dialog-actions">
-          <Link className="cancel-button__link" to="/warehouses">
-            <button className="cancel-button" onClick={onClose}>
-              Cancel
-            </button>
-          </Link>
-          <Link className="delete-button__link" to="/warehouses">
-            <button className="delete-button" onClick={handleDelete}>
-              Delete
-            </button>
-          </Link>
-        </div>
-      </div>
-    </div>
+    <section className="warehouse">
+      <header className="warehouse__header">
+        <h1 className="warehouse__title">Warehouse</h1>
+      </header>
+      <ul className="warehouse__list">
+        {warehouse.map((warehouse) => (
+          <li className="warehouse__item" key={warehouse.id}>
+            <div className="warehouse__info-group">
+              <div className="warehouse__info-item warehouse__info-item--warehouse">
+                <p className="warehouse__sub-title">Warehouse</p>
+                <p className="warehouse__info wh-inv__info--warehouse">
+                  {warehouse.item_name}
+                </p>
+              </div>
+              <div className="warehouse__info-item warehouse__info-item--actions">
+                <img
+                  src={close}
+                  alt="Delete"
+                  className="warehouse__icon"
+                  onClick={() => {
+                    handleDelete(warehouse.item_name, warehouse.id);
+                  }}
+                />
+                <Link to={`/editwarehouseItem/${warehouse.id}`}>
+                  <img src={editicon} alt="Edit" className="warehouse__icon" />
+                </Link>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+      {popup && (
+        <section className="delete-container">
+          <section className="delete">
+            <img
+              src={close}
+              className="delete__close"
+              onClick={() => setPopup(false)}
+            />
+            <h1 className="delete__title">Delete {inv} warehouse item?</h1>
+            <p className="delete__paragraph">
+              Please confirm that you'd like to delete {inv} from the warehouse
+              list. You won't be able to undo this action.
+            </p>
+            <section className="delete__buttons">
+              <button
+                className="delete__buttons--1"
+                onClick={() => setPopup(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="delete__buttons--2"
+                onClick={() => {
+                  handleConfirmDelete(invID);
+                }}
+              >
+                Delete
+              </button>
+            </section>
+          </section>
+        </section>
+      )}
+    </section>
   );
 };
 

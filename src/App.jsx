@@ -10,42 +10,118 @@ import InventoryItemDetailsPage from "./pages/InventoryItemDetailsPage/Inventory
 import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryItemPage.jsx";
 import AddInventoryItemPage from "./pages/AddInventoryItemPage/AddInventoryItemPage.jsx";
 import Deletewarehousepage from "./pages/Deletewarehousepage/Deletewarehousepage.jsx";
+import axios from "axios";
 function App() {
-  const port = import.meta.env.VITE_PORT || "http://localhost:8080";
+  const [warehouses, setWarehouses] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [inventory, setInventory] = useState([]);
+  const [searchQueryInv, setSearchQueryInv] = useState("");
+  const [ID, setID] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/warehouses");
+        setWarehouses(response.data);
+      } catch (error) {
+        console.log(`Looks like there is an error fetching: ${error}`);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/inventory");
+        setInventory(response.data);
+      } catch (error) {
+        console.log(`Looks like there is an error fetching: ${error}`);
+      }
+    };
+    fetchData();
+  }, []);
+
+  function passId(id) {
+    setID(id);
+  }
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path="/"
-          element={<WarehousePage button="warehousesButton" />}
+          element={
+            <WarehousePage
+              button="warehousesButton"
+              warehouses={warehouses}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+          }
         ></Route>
         <Route
           path="/warehouses/:warehouseId"
-          element={<WarehouseDetailsPage button="warehousesButton" />}
+          element={
+            <WarehouseDetailsPage
+              button="warehousesButton"
+              warehouses={warehouses}
+              passId={passId}
+            />
+          }
         ></Route>
         <Route
-          path="/inventoryDetails"
-          element={<InventoryItemDetailsPage button="inventoryButton" />}
+          path="/inventoryDetails/:inventoryId"
+          element={
+            <InventoryItemDetailsPage
+              button="inventoryButton"
+              inventory={inventory}
+              passId={passId}
+            />
+          }
         ></Route>
         <Route
-          path="/editInventoryItem"
-          element={<EditInventoryItemPage button="inventoryButton" />}
+          path="/editInventoryItem/:inventoryId"
+          element={
+            <EditInventoryItemPage
+              button="inventoryButton"
+              inventory={inventory}
+              passId={passId}
+            />
+          }
         ></Route>
         <Route
           path="/inventory"
-          element={<InventoryPage button="inventoryButton" />}
+          element={
+            <InventoryPage
+              button="inventoryButton"
+              inventory={inventory}
+              searchQueryInv={searchQueryInv}
+              setSearchQueryInv={setSearchQueryInv}
+            />
+          }
         ></Route>
         <Route
           path="/addNewWarehouse"
           element={<AddNewWarehousePage button="warehousesButton" />}
         ></Route>
         <Route
-          path="/EditWarehouse"
-          element={<EditWarehousePage button="warehousesButton" />}
+          path="/EditWarehouse/:warehouseId"
+          element={
+            <EditWarehousePage
+              button="warehousesButton"
+              ID={ID}
+              warehouses={warehouses}
+            />
+          }
         ></Route>
         <Route
           path="/addInventory"
-          element={<AddInventoryItemPage button="inventoryButton" />}
+          element={
+            <AddInventoryItemPage
+              button="inventoryButton"
+              warehouses={warehouses}
+            />
+          }
         ></Route>
         <Route
           path="/deleteWarehouse"
