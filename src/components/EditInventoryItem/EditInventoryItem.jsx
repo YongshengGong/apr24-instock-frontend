@@ -6,14 +6,14 @@ import QuantityField from "../QuantityField/QuantityField";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const EditInventoryItem = ({ inventory, warehouses }) => {
+const EditInventoryItem = () => {
   const url = "http://localhost:8080";
   const nav = useNavigate();
   const [itemInfo, setItemInfo] = useState({});
   const { inventoryId } = useParams();
   const [item_name, setitem_name] = useState("");
   const [description, setDescription] = useState("");
-  const warehouses1 = [
+  const warehouses = [
     { warehouse_name: "Please select", warehouse_id: "" },
     { warehouse_name: "Manhattan", warehouse_id: 1 },
     { warehouse_name: "Washington", warehouse_id: 2 },
@@ -24,12 +24,10 @@ const EditInventoryItem = ({ inventory, warehouses }) => {
     { warehouse_name: "Miami", warehouse_id: 7 },
     { warehouse_name: "Boston", warehouse_id: 8 },
   ];
-  const [warehouses, setWarehouses] = useState([]);
-  // const [warehouse, setWarehouse] = useState("")
-  //   {
-  //   warehouse_name: "",
-  //   warehouse_id: "",
-  // }
+  const [warehouse, setWarehouse] = useState({
+    warehouse_name: "",
+    warehouse_id: "",
+  });
   const [warehouse_id, setWarehouseId] = useState("");
 
   const [status, setStatus] = useState(2);
@@ -72,13 +70,12 @@ const EditInventoryItem = ({ inventory, warehouses }) => {
           warehouse_name: response.data.warehouse_name,
           warehouse_id: response.data.warehouse_id,
         };
-        // setWarehouseId(response.data.warehouse_id);
+        setWarehouseId(response.data.warehouse_id);
         setCategory(response.data.category);
         setQuantity(response.data.quantity);
         setStatus(response.data.status);
         convertStatus();
         setWarehouse(newWarehouse);
-        console.log(newWarehouse);
       } catch (e) {
         console.error("error getting item data:", e);
       }
@@ -90,16 +87,6 @@ const EditInventoryItem = ({ inventory, warehouses }) => {
   const handleRadioButton = (value) => {
     setInStock((isInStock) => !isInStock);
     setStatus(value);
-  };
-
-  const handleWarehouse = (e) => {
-    const selectedWarehouseName = e.targe.value;
-    const warehouseFind = warehouses.find((w) => {
-      w.name === selectedWarehouseName;
-    });
-    if (warehouseFind) {
-      setWarehouseId(warehouseFind.id);
-    }
   };
 
   const handleOnSubmit = (e) => {
@@ -126,7 +113,7 @@ const EditInventoryItem = ({ inventory, warehouses }) => {
     if (!quantity) {
       newErrors.quantity = true;
     }
-    console.log(newErrors);
+
     setErrors(newErrors);
 
     if (
@@ -146,16 +133,12 @@ const EditInventoryItem = ({ inventory, warehouses }) => {
       };
       async function updateInventoryItem() {
         try {
-          console.log(warehouse.warehouse_id);
-          console.log(warehouse.warehouse_name);
-          console.log(editedItem.item_name);
           const res = await axios.put(
             `${url}/inventory/${inventoryId}`,
             editedItem
           );
         } catch (error) {
-          console.log(editedItem);
-          console.log("error caught in the catch block:", error);
+          console.error("error caught in the catch block:", error);
         }
       }
       updateInventoryItem();
@@ -170,7 +153,6 @@ const EditInventoryItem = ({ inventory, warehouses }) => {
 
   return (
     <section className="edit-inventory">
-      {/* {console.log(itemInfo)} */}
       <div className="edit-inventory__title">
         <Link
           className="edit-inventory__back-button-link"
@@ -224,14 +206,6 @@ const EditInventoryItem = ({ inventory, warehouses }) => {
                   <option>{category}</option>
                 ))}
               </select>
-              {/* <select className="item-details__category" name="category">
-                <option value="">Please select</option>
-                <option value="electronics">Electronics</option>
-                <option value="gear">Gear</option>
-                <option value="apparel">Apparel</option>
-                <option value="health">Health</option>
-                <option value="accessories">Accessories</option>
-              </select> */}
             </label>
           </div>
           <div className="item-availability">
@@ -277,31 +251,12 @@ const EditInventoryItem = ({ inventory, warehouses }) => {
                   onChange={(e) => setWarehouse(e.target.value)}
                   value={warehouse.warehouse_name}
                 >
-                  {warehouses1.map((warehouse) => (
-                    <option key={warehouse.warehouse_id}>
-                      {warehouse.warehouse_name}
-                    </option>
+                  {warehouses.map((warehouse) => (
+                    <option>{warehouse.warehouse_name}</option>
                   ))}
                 </select>
-                {/* <select
-                  className="item-availability__warehouse"
-                  name="warehouse"
-                >
-                  {<option value="">Please select</option>}
-                  <option value="">
-                    {selectedItem.selectedItem.warehouse_name}
-                  </option>
-                  <option value="manhattan">Manhattan</option>
-                  <option value="washington">Washington</option>
-                  <option value="jersey">Jersey</option>
-                  <option value="sf">SF</option>
-                  <option value="santa monica">Santa Monica</option>
-                  <option value="seattle">Seattle</option>
-                  <option value="miami">Miami</option>
-                  <option value="boston">Boston</option>
-                </select> */}
               </label>
-              <p>{warehouse.warehouse_id}</p>
+              <p>{warehouse_id}</p>
             </div>
           </div>
         </div>
@@ -317,17 +272,17 @@ const EditInventoryItem = ({ inventory, warehouses }) => {
               value="Cancel"
             />
           </Link>
-          {/* <Link
+          <Link
             className="edit-inventory__form-save-button-link"
             to="/inventoryDetails"
-          > */}
-          <input
-            className="edit-inventory__form-save-button"
-            type="submit"
-            name="save"
-            value="Save"
-          />
-          {/* </Link> */}
+          >
+            <input
+              className="edit-inventory__form-save-button"
+              type="submit"
+              name="save"
+              value="Save"
+            />
+          </Link>
         </div>
       </form>
     </section>
