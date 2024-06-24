@@ -256,7 +256,6 @@ const EditInventoryItem = () => {
                   ))}
                 </select>
               </label>
-              <p>{warehouse_id}</p>
             </div>
           </div>
         </div>

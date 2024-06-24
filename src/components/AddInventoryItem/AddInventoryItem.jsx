@@ -4,13 +4,14 @@ import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import QuantityField from "../QuantityField/QuantityField";
 const AddInventoryItem = ({ warehouses }) => {
   const nav = useNavigate();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [status, setStatus] = useState("In Stock");
-  const [qty, setQty] = useState("0");
+  const [quantity, setQuantity] = useState("");
   const [warehouse, setWarehouse] = useState("");
   const [errors, setErrors] = useState({
     name: false,
@@ -19,6 +20,21 @@ const AddInventoryItem = ({ warehouses }) => {
     qty: false,
     warehouse: false,
   });
+
+  const [isInStock, setInStock] = useState(false);
+  const convertStatus = () => {
+    if (!status === "In Stock") {
+      setStatus("Out of Stock");
+      setInStock(false);
+    } else {
+      setStatus("In Stock");
+      setInStock(true);
+    }
+  };
+  const handleRadioButton = (value) => {
+    setInStock((isInStock) => !isInStock);
+    setStatus(value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -160,7 +176,7 @@ const AddInventoryItem = ({ warehouses }) => {
                     type="radio"
                     name="radio"
                     value="In Stock"
-                    onChange={(e) => setStatus(e.target.value)}
+                    onChange={() => handleRadioButton("In Stock")}
                     defaultChecked
                   ></input>
                   In stock
@@ -171,29 +187,14 @@ const AddInventoryItem = ({ warehouses }) => {
                     type="radio"
                     name="radio"
                     value="Out of Stock"
-                    onChange={(e) => setStatus(e.target.value)}
+                    onChange={() => handleRadioButton("Out of Stock")}
                   ></input>
                   Out of stock
                 </label>
               </div>
-              <div className="item-availability__quantity-info">
-                <label className="item-availability__quantity-label">
-                  <span className="item-availability__quantity-span">
-                    Quantity
-                  </span>
-                  <input
-                    className={
-                      errors.qty
-                        ? "item-availability__quantity item-availability__quantity--error"
-                        : "item-availability__quantity"
-                    }
-                    type="number"
-                    name="quantity"
-                    value={qty}
-                    onChange={(e) => setQty(e.target.value)}
-                  ></input>
-                </label>
-              </div>
+              {isInStock && (
+                <QuantityField quantity={quantity} setQuantity={setQuantity} />
+              )}
               <label className="item-availability__warehouse-label">
                 Warehouse
                 <select
