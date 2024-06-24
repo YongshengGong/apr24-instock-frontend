@@ -6,9 +6,9 @@ import "./TablesWarehouses.scss";
 import PrimaryButton from "../CallToActions/PrimaryButton";
 import { Link } from "react-router-dom";
 import close from "../../assets/images/icons/action/close-24px.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
+const TablesWarehouses = ({ warehouses, searchQuery, handleSearch, setWarehouses}) => {
   const [inv, setInv] = useState('');
   const [popup, setPopup] = useState(false);
   const [invID, setInvID] = useState('');
@@ -38,6 +38,14 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
       }
     }
   }
+  //  const refreshWarehouses=()=>{
+  //   axios.get(`http://localhost:8080/warehouses/`)
+  //   .then((res)=>{
+  //     setWarehouses(res.data);
+  //   })
+  //  }
+
+
   return (
     <section className="warehouses">
       <header className="warehouses__header">
@@ -139,3 +147,4 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
 };
 
 export default TablesWarehouses;
+// export { refreshWarehouses};

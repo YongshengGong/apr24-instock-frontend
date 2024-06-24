@@ -3,9 +3,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
-
-const AddNewWarehouse = () => {
-  const url = "http://localhost:8080";
+const AddNewWarehouse = ({ addNewWarehouse }) => {
+  // const url = "http://localhost:8080";
   const nav = useNavigate();
   const [warehouse_name, setWarehouse_name] = useState('');
   const [address, setAddress] = useState('');
@@ -62,7 +61,7 @@ const AddNewWarehouse = () => {
       newErrors.contact_email = true;
     }
     setErrors(newErrors);
-   
+
     if (!newErrors.warehouse_name &&
       !newErrors.address &&
       !newErrors.city &&
@@ -81,23 +80,19 @@ const AddNewWarehouse = () => {
         contact_phone: contact_phone,
         contact_email: contact_email
       }
-      async function addNewWarehouse() {
-        try {
-          const res = await axios.post(`${url}/warehouses/addNewWarehouse`, newWarehouse);
-          console.log(res.data);
-        }
-        catch (error) {
-          console.log("error caught in the catch block:", error);
-        }
-      }
-      addNewWarehouse();
+
+      addNewWarehouse(newWarehouse);
       const user = confirm(`The new warehouse has been created successfully✅`);
       if (user === true) {
         nav("/");
       }
     }
-
   }
+  const refreshWarehouses = () => {
+    nav('/');
+  }
+
+
   return (
     <main className="add-warehouse">
       <div className="add-warehouse__title">
@@ -232,7 +227,7 @@ const AddNewWarehouse = () => {
               value="Cancel"
             />
           </Link>
-          <button className="add-warehouse__form-save-button" type="submit">
+          <button className="add-warehouse__form-save-button" type="submit" onClick={refreshWarehouses} >
             + Add Warehouse
           </button>
         </div>
