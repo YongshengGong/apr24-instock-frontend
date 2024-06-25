@@ -107,7 +107,7 @@ function App() {
             <InventoryItemDetailsPage
               button="inventoryButton"
               inventory={inventory}
-              // passId={passId}
+              passId={passId}
             />
           }
         ></Route>
@@ -117,8 +117,8 @@ function App() {
             <EditInventoryItemPage
               button="inventoryButton"
               inventory={inventory}
-              // warehouses={warehouses}
-              // passId={passId}
+              warehouses={warehouses}
+              passId={passId}
             />
           }
         ></Route>
