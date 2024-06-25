@@ -3,7 +3,7 @@ import Footer from "../../components/Footer/Footer";
 import "./WarehousePage.scss";
 import WarehouseList from "../../components/TablesWarehouses/TablesWarehouses";
 
-function WarehousePage({ button, warehouses, searchQuery, setSearchQuery }) {
+function WarehousePage({ button, warehouses, searchQuery, setSearchQuery,deleteWarehouse,passID1 }) {
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
@@ -20,6 +20,8 @@ function WarehousePage({ button, warehouses, searchQuery, setSearchQuery }) {
         warehouses={filteredWarehouses}
         searchQuery={searchQuery}
         handleSearch={handleSearch}
+        deleteWarehouse={deleteWarehouse}
+        passID1={passID1}
       />
       <Footer />
     </>

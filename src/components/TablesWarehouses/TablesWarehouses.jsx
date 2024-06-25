@@ -7,8 +7,10 @@ import PrimaryButton from "../CallToActions/PrimaryButton";
 import { Link } from "react-router-dom";
 import close from "../../assets/images/icons/action/close-24px.svg";
 import { useState } from "react";
-import axios from "axios";
-const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
+import { useNavigate } from "react-router-dom";
+
+const TablesWarehouses = ({ warehouses, searchQuery, handleSearch,deleteWarehouse,passID1 }) => {
+  const nav=useNavigate();
   const [inv, setInv] = useState('');
   const [popup, setPopup] = useState(false);
   const [invID, setInvID] = useState('');
@@ -17,9 +19,9 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
     setPopup(true);
     setInvID(id);
   }
-  const handleConfirmDelete = async (passedID) => {
+  const handleConfirmDelete = (passedID) => {
     try {
-      const res = await axios.delete(`http://localhost:8080/warehouses/${passedID}`);
+      deleteWarehouse(passedID);
       const user = confirm("You have just deleted the warehouse, please mannually restart backend NODE to see the newest update");
       if (user) {
         setPopup(false);
@@ -37,6 +39,10 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
         }
       }
     }
+  }
+  function handleClick(id){
+    nav(`/warehouses/${id}`)
+    passID1(id)
   }
   return (
     <section className="warehouses">
@@ -85,12 +91,14 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
               <div className="warehouses__info-item warehouses__info-item--warehouse">
                 <p className="warehouses__sub-title">WAREHOUSE</p>
                 <div className="link-arrow">
-                  <Link
-                    to={`/warehouses/${warehouse.id}`}
-                    className="warehouses__info warehouses__info--warehouse"
+                  {/* <Link
+                    to={`/warehouses/${warehouse.id}`} */}
+                   <div className="warehouses__info warehouses__info--warehouse"
+                   onClick={()=>{handleClick(warehouse.id)}}
                   >
                     {warehouse.warehouse_name}
-                  </Link>
+                    </div>
+                  {/* </Link> */}
                   <img src={chevron} alt="Enter Arrow" />
                 </div>
               </div>
@@ -115,7 +123,7 @@ const TablesWarehouses = ({ warehouses, searchQuery, handleSearch }) => {
                 {/* Need to Wrap these in Links! */}
                 <img src={trashcan} alt="Delete" className="warehouses__icon" onClick={() => { handleDelete(warehouse.warehouse_name, warehouse.id) }} />
                 <Link to={`/editWarehouse/${warehouse.id}`}>
-                  <img src={editicon} alt="Edit" className="warehouses__icon" />
+                  <img src={editicon} alt="Edit" className="warehouses__icon" onClick={()=>passID1(warehouse.id)}/>
                 </Link>
               </div>
             </div>

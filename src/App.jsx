@@ -16,6 +16,7 @@ function App() {
   const [inventory, setInventory] = useState([]);
   const [searchQueryInv, setSearchQueryInv] = useState("");
   const [ID, setID] = useState(null);
+  const [ID1, setID1] = useState(null);
   const [test,setTest]=useState("");
   useEffect(() => {
     const fetchData = async () => {
@@ -47,8 +48,27 @@ function App() {
   async function addNewWarehouse(newWarehouse) {
     try {
       const res = await axios.post(`http://localhost:8080/warehouses/addNewWarehouse`, newWarehouse);
-      console.log(res.data);
       setTest(res.data);
+    }
+    catch (error) {
+      console.log("error caught in the catch block:", error);
+    }
+  }
+
+  async function deleteWarehouse(passedID){
+    const res = await axios.delete(`http://localhost:8080/warehouses/${passedID}`);
+    setTest(res.data);
+  }
+  function passID1(id){
+    setID1(id);
+    console.log(id);
+  }
+  async function editWarehouse(ID,newWarehouse) {
+    console.log(newWarehouse)
+    try {
+      const res = await axios.put(`http://localhost:8080/warehouses/${ID}`, newWarehouse);
+      setTest(res.data);
+      console.log(res.data)
     }
     catch (error) {
       console.log("error caught in the catch block:", error);
@@ -66,6 +86,8 @@ function App() {
               warehouses={warehouses}
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
+              deleteWarehouse={deleteWarehouse}
+              passID1={passID1}
             />
           }
         ></Route>
@@ -120,8 +142,9 @@ function App() {
           element={
             <EditWarehousePage
               button="warehousesButton"
-              ID={ID}
+              ID1={ID1}
               warehouses={warehouses} 
+              editWarehouse={editWarehouse}
             />
           }
         ></Route>
