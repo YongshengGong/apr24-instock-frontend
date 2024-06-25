@@ -1,10 +1,9 @@
 import "./AddNewWarehouse.scss";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
-const AddNewWarehouse = () => {
+const AddNewWarehouse = ({addNewWarehouse}) => {
   const url = "http://localhost:8080";
   const nav = useNavigate();
   const [warehouse_name, setWarehouse_name] = useState('');
@@ -81,16 +80,8 @@ const AddNewWarehouse = () => {
         contact_phone: contact_phone,
         contact_email: contact_email
       }
-      async function addNewWarehouse() {
-        try {
-          const res = await axios.post(`${url}/warehouses/addNewWarehouse`, newWarehouse);
-          console.log(res.data);
-        }
-        catch (error) {
-          console.log("error caught in the catch block:", error);
-        }
-      }
-      addNewWarehouse();
+ 
+      addNewWarehouse(newWarehouse);
       const user = confirm(`The new warehouse has been created successfully✅`);
       if (user === true) {
         nav("/");

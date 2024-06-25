@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
-const EditWarehouse = ({ ID, warehouses }) => {
+
+const EditWarehouse = ({ ID, warehouses,editWarehouse }) => {
+  console.log(ID)
   const selectedWarehouse = warehouses.find(warehouse => warehouse.id == ID);
   localStorage.setItem("selectedWarehouse", JSON.stringify(selectedWarehouse) || localStorage.getItem("selectedWarehouse"));
   const ware = JSON.parse(localStorage.getItem("selectedWarehouse"));
-  console.log(ware);
-  const url = "http://localhost:8080";
   const nav = useNavigate();
   const [warehouse_name, setWarehouse_name] = useState(ware.warehouse_name);
   const [address, setAddress] = useState(ware.address);
@@ -85,16 +84,8 @@ const EditWarehouse = ({ ID, warehouses }) => {
         contact_phone: contact_phone,
         contact_email: contact_email
       }
-      async function addNewWarehouse() {
-        try {
-          const res = await axios.put(`${url}/warehouses/${ID}`, newWarehouse);
-          console.log(res.data);
-        }
-        catch (error) {
-          console.log("error caught in the catch block:", error);
-        }
-      }
-      addNewWarehouse();
+    
+      editWarehouse(ID,newWarehouse);
       const user = confirm(`This warehouse has been updated successfully✅`);
       if (user === true) {
         nav(`/`);
