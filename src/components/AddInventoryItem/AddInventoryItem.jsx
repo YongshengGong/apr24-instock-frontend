@@ -63,7 +63,6 @@ const AddInventoryItem = ({ warehouses }) => {
       const filteredWarehouse = warehouses.find(
         (ware) => ware.warehouse_name === warehouse
       );
-      console.log(filteredWarehouse.id);
       const newInventory = {
         warehouse_id: filteredWarehouse.id,
         item_name: name,
@@ -78,7 +77,6 @@ const AddInventoryItem = ({ warehouses }) => {
             `http://localhost:8080/inventory`,
             newInventory
           );
-          console.log(res.data);
         } catch (error) {
           console.log("error caught in the catch block:", error);
         }

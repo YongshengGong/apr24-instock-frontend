@@ -15,11 +15,9 @@ const InventoryFullList = ({ searchQuery, handleSearch }) => {
     async function fetch() {
       const res = await axios.get(`http://localhost:8080/inventory`);
       setInventory(res.data);
-      console.log(res.data);
     }
     fetch();
   }, []);
-  console.log(inventory);
   const [inv, setInv] = useState("");
   const [popup, setPopup] = useState(false);
   const [invID, setInvID] = useState("");
@@ -33,8 +31,10 @@ const InventoryFullList = ({ searchQuery, handleSearch }) => {
       const res = await axios.delete(
         `http://localhost:8080/inventory/${passedID}`
       );
+      const res1 = await axios.get(`http://localhost:8080/inventory`);
+      setInventory(res1.data);
       const user = confirm(
-        "You have just deleted the inventory, please mannually restart backend NODE to see the newest update"
+        "You have just deleted the inventory."
       );
       if (user) {
         setPopup(false);
@@ -44,7 +44,7 @@ const InventoryFullList = ({ searchQuery, handleSearch }) => {
     } catch (error) {
       if (error.response.status == 404) {
         const user = confirm(
-          "This inventory has been deleted or doesn't exit. If you have just deleted it, please mannually restart backend NODE to see the newest update"
+          "This inventory has been deleted or doesn't exit."
         );
         if (user) {
           setPopup(false);
@@ -104,10 +104,8 @@ const InventoryFullList = ({ searchQuery, handleSearch }) => {
               <div className="inventory__info-item inventory__info-item--item">
                 <p className="inventory__sub-title">INVENTORY ITEM</p>
                 <div className="link-arrow">
-                  <Link
-                    to={`/inventoryDetails/${inventory.id}`}
-                    className="inventory__info inventory__info--item"
-                  >
+                  <Link to={`/editInventoryItem/${inventory.id}`}
+                    className="inventory__info inventory__info--item">
                     {inventory.item_name}
                   </Link>
                   <img src={chevron} alt="Enter Arrow" />

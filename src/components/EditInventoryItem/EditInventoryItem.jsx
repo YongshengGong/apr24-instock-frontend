@@ -13,17 +13,7 @@ const EditInventoryItem = () => {
   const { inventoryId } = useParams();
   const [item_name, setitem_name] = useState("");
   const [description, setDescription] = useState("");
-  const warehouses = [
-    { warehouse_name: "Please select", warehouse_id: "" },
-    { warehouse_name: "Manhattan", warehouse_id: 1 },
-    { warehouse_name: "Washington", warehouse_id: 2 },
-    { warehouse_name: "Jersey", warehouse_id: 3 },
-    { warehouse_name: "SF", warehouse_id: 4 },
-    { warehouse_name: "Santa Monica", warehouse_id: 5 },
-    { warehouse_name: "Seattle", warehouse_id: 6 },
-    { warehouse_name: "Miami", warehouse_id: 7 },
-    { warehouse_name: "Boston", warehouse_id: 8 },
-  ];
+  const [warehouses,setWarehouses] = useState(null);
   const [warehouse, setWarehouse] = useState({
     warehouse_name: "",
     warehouse_id: "",
@@ -76,6 +66,8 @@ const EditInventoryItem = () => {
         setStatus(response.data.status);
         convertStatus();
         setWarehouse(newWarehouse);
+        const response1 = await axios.get(`${url}/warehouses`);
+        setWarehouses(response1.data);
       } catch (e) {
         console.error("error getting item data:", e);
       }
@@ -83,6 +75,12 @@ const EditInventoryItem = () => {
     fetchItemInfo();
     convertStatus();
   }, []);
+
+  if(!warehouses){
+    return(
+      <>loading</>
+    )
+  }
 
   const handleRadioButton = (value) => {
     setInStock((isInStock) => !isInStock);
@@ -115,7 +113,6 @@ const EditInventoryItem = () => {
     }
 
     setErrors(newErrors);
-
     if (
       !newErrors.item_name &&
       !newErrors.description &&
@@ -123,7 +120,7 @@ const EditInventoryItem = () => {
       !newErrors.status &&
       !newErrors.quantity
     ) {
-      const editedItem = {
+;      const editedItem = {
         warehouse_id: warehouse_id,
         item_name: item_name,
         description: description,
@@ -156,7 +153,7 @@ const EditInventoryItem = () => {
       <div className="edit-inventory__title">
         <Link
           className="edit-inventory__back-button-link"
-          to="/inventoryDetails"
+          to="/inventory"
         >
           <img
             className="edit-inventory__back-button"
@@ -202,8 +199,8 @@ const EditInventoryItem = () => {
                 onChange={(e) => setCategory(e.target.value)}
                 value={category}
               >
-                {categories.map((category) => (
-                  <option>{category}</option>
+                {categories.map((category,index) => (
+                  <option key={index}>{category}</option>
                 ))}
               </select>
             </label>
@@ -248,11 +245,11 @@ const EditInventoryItem = () => {
                 <select
                   className="item-availability__warehouse"
                   name="warehouse"
-                  onChange={(e) => setWarehouse(e.target.value)}
+                  onChange={(e) => {setWarehouse({...warehouse,warehouse_name:e.target.value});setWarehouseId(warehouses.find(warehouse=>warehouse.warehouse_name==e.target.value).id)}}
                   value={warehouse.warehouse_name}
                 >
-                  {warehouses.map((warehouse) => (
-                    <option>{warehouse.warehouse_name}</option>
+                  {warehouses.map((warehouse,index) => (
+                    <option key={index}>{warehouse.warehouse_name}</option>
                   ))}
                 </select>
               </label>
@@ -262,7 +259,7 @@ const EditInventoryItem = () => {
         <div className="edit-inventory__form-buttons">
           <Link
             className="edit-inventory__form-cancel-button-link"
-            to="/"
+            to="/inventory"
           >
             <input
               className="edit-inventory__form-cancel-button"
@@ -271,17 +268,11 @@ const EditInventoryItem = () => {
               value="Cancel"
             />
           </Link>
-          <Link
-            className="edit-inventory__form-save-button-link"
-            to="/"
-          >
-            <input
+            <button
               className="edit-inventory__form-save-button"
               type="submit"
               name="save"
-              value="Save"
-            />
-          </Link>
+            >Save</button>
         </div>
       </form>
     </section>
