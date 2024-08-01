@@ -11,6 +11,7 @@ import EditInventoryItemPage from "./pages/EditInventoryItemPage/EditInventoryIt
 import AddInventoryItemPage from "./pages/AddInventoryItemPage/AddInventoryItemPage.jsx";
 import axios from "axios";
 function App() {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [warehouses, setWarehouses] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [inventory, setInventory] = useState([]);
@@ -21,7 +22,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/warehouses");
+        const response = await axios.get(`${API_URL}/warehouses`);
         setWarehouses(response.data);
       } catch (error) {
         console.log(`Looks like there is an error fetching: ${error}`);
@@ -33,7 +34,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/inventory");
+        const response = await axios.get(`${API_URL}/inventory`);
         setInventory(response.data);
       } catch (error) {
         console.log(`Looks like there is an error fetching: ${error}`);
@@ -47,7 +48,7 @@ function App() {
   }
   async function addNewWarehouse(newWarehouse) {
     try {
-      const res = await axios.post(`http://localhost:8080/warehouses/addNewWarehouse`, newWarehouse);
+      const res = await axios.post(`${API_URL}/warehouses/addNewWarehouse`, newWarehouse);
       setTest(res.data);
     }
     catch (error) {
@@ -56,7 +57,7 @@ function App() {
   }
 
   async function deleteWarehouse(passedID) {
-    const res = await axios.delete(`http://localhost:8080/warehouses/${passedID}`);
+    const res = await axios.delete(`${API_URL}/warehouses/${passedID}`);
     setTest(res.data);
   }
   function passID1(id) {
@@ -64,7 +65,7 @@ function App() {
   }
   async function editWarehouse(ID, newWarehouse) {
     try {
-      const res = await axios.put(`http://localhost:8080/warehouses/${ID}`, newWarehouse);
+      const res = await axios.put(`${API_URL}/warehouses/${ID}`, newWarehouse);
       setTest(res.data);
     }
     catch (error) {

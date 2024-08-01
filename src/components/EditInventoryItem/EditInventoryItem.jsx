@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const EditInventoryItem = () => {
-  const url = "http://localhost:8080";
+  const API_URL = import.meta.env.VITE_API_URL;
   const nav = useNavigate();
   const [itemInfo, setItemInfo] = useState({});
   const { inventoryId } = useParams();
@@ -52,7 +52,7 @@ const EditInventoryItem = () => {
   useEffect(() => {
     const fetchItemInfo = async () => {
       try {
-        const response = await axios.get(`${url}/inventory/${inventoryId}`);
+        const response = await axios.get(`${API_URL}/inventory/${inventoryId}`);
         setItemInfo(response.data);
         setitem_name(response.data.item_name);
         setDescription(response.data.description);
@@ -66,7 +66,7 @@ const EditInventoryItem = () => {
         setStatus(response.data.status);
         convertStatus();
         setWarehouse(newWarehouse);
-        const response1 = await axios.get(`${url}/warehouses`);
+        const response1 = await axios.get(`${API_URL}/warehouses`);
         setWarehouses(response1.data);
       } catch (e) {
         console.error("error getting item data:", e);
@@ -131,7 +131,7 @@ const EditInventoryItem = () => {
       async function updateInventoryItem() {
         try {
           const res = await axios.put(
-            `${url}/inventory/${inventoryId}`,
+            `${API_URL}/inventory/${inventoryId}`,
             editedItem
           );
         } catch (error) {

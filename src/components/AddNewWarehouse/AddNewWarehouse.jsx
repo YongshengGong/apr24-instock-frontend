@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import backArrowLogo from "../../assets/images/icons/nav/arrow_back-24px.svg";
 
 const AddNewWarehouse = ({addNewWarehouse}) => {
-  const url = "http://localhost:8080";
   const nav = useNavigate();
   const [warehouse_name, setWarehouse_name] = useState('');
   const [address, setAddress] = useState('');

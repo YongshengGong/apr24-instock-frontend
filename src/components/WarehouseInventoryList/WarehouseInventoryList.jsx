@@ -6,10 +6,11 @@ import filtericon from "../../assets/images/icons/nav/sort-default.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const WarehouseInventoryList = ({ warehouseId }) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [inventory, setInventory] = useState([]);
   useEffect(() => {
     async function fetch() {
-      const res = await axios.get(`http://localhost:8080/api/warehouses/${warehouseId}/inventories`);
+      const res = await axios.get(`${API_URL}/api/warehouses/${warehouseId}/inventories`);
       setInventory(res.data);
     }
     fetch();

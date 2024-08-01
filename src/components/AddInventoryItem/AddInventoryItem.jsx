@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import QuantityField from "../QuantityField/QuantityField";
 const AddInventoryItem = ({ warehouses }) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const nav = useNavigate();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -74,7 +75,7 @@ const AddInventoryItem = ({ warehouses }) => {
       async function addNewInventory() {
         try {
           const res = await axios.post(
-            `http://localhost:8080/inventory`,
+            `${API_URL}/inventory`,
             newInventory
           );
         } catch (error) {

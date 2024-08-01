@@ -10,10 +10,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const InventoryFullList = ({ searchQuery, handleSearch }) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [inventory, setInventory] = useState([]);
   useEffect(() => {
     async function fetch() {
-      const res = await axios.get(`http://localhost:8080/inventory`);
+      const res = await axios.get(`${API_URL}/inventory`);
       setInventory(res.data);
     }
     fetch();
@@ -29,9 +30,9 @@ const InventoryFullList = ({ searchQuery, handleSearch }) => {
   const handleConfirmDelete = async (passedID) => {
     try {
       const res = await axios.delete(
-        `http://localhost:8080/inventory/${passedID}`
+        `${API_URL}/inventory/${passedID}`
       );
-      const res1 = await axios.get(`http://localhost:8080/inventory`);
+      const res1 = await axios.get(`${API_URL}/inventory`);
       setInventory(res1.data);
       const user = confirm(
         "You have just deleted the inventory."
